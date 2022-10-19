@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Result.Abstract;
+using Core.Utilities.Result.Concrete;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,29 +14,39 @@ namespace Business.Concrete
 {
     public class TransportLayoverManager : ITransportLayoverService
     {
+        ITransportLayoverDal _transportLayoverDal;
+
+        public TransportLayoverManager(ITransportLayoverDal transportLayoverDal)
+        {
+            _transportLayoverDal = transportLayoverDal;
+        }
+
         public IResult Add(TransportLayover transportLayover)
         {
-            throw new NotImplementedException();
+            _transportLayoverDal.Add(transportLayover);
+            return new SuccessResult(Messages.TransportLayoverIsAdded);
         }
 
         public IResult Delete(TransportLayover transportLayover)
         {
-            throw new NotImplementedException();
+            _transportLayoverDal.Delete(transportLayover);
+            return new SuccessResult(Messages.TransportLayoverIsDeleted);
         }
 
-        public IDataResult<TransportLayover> GetAll()
+        public IDataResult<List<TransportLayover>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<TransportLayover>>(_transportLayoverDal.GetAll(), Messages.TransportLayoversListed);
         }
 
         public IDataResult<TransportLayover> GetTransportLayoverById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<TransportLayover>(_transportLayoverDal.Get(x => x.TransportId == id), Messages.TransportLayoverIsListed);
         }
 
         public IResult Update(TransportLayover transportLayover)
         {
-            throw new NotImplementedException();
+            _transportLayoverDal.Update(transportLayover);
+            return new SuccessResult(Messages.TransportLayoverIsUpdated);
         }
     }
 }

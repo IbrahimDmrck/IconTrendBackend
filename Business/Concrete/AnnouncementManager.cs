@@ -46,7 +46,7 @@ namespace Business.Concrete
 
         public IDataResult<Announcement> GetAnnouncementById(int id)
         {
-            return new SuccessDataResult<Announcement>(_announcementDal.Get(x => x.Id == id), Messages.AnnounceListed);
+            return new SuccessDataResult<Announcement>(_announcementDal.Get(x => x.Id == id), Messages.AnnouncementListed);
         }
 
        

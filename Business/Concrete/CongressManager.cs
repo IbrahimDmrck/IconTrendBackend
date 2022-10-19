@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Result.Abstract;
+using Core.Utilities.Result.Concrete;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,29 +14,39 @@ namespace Business.Concrete
 {
     public class CongressManager : ICongressService
     {
+        ICongressDal _congressDal;
+
+        public CongressManager(ICongressDal congressDal)
+        {
+            _congressDal = congressDal;
+        }
+
         public IResult Add(Congress congress)
         {
-            throw new NotImplementedException();
+             _congressDal.Add(congress);
+            return new SuccessResult(Messages.CongressAdded);
         }
 
         public IResult Delete(Congress congress)
         {
-            throw new NotImplementedException();
+            _congressDal.Delete(congress);
+            return new SuccessResult(Messages.CongressDeleted);
         }
 
-        public IDataResult<Congress> GetAll()
+        public IDataResult<List<Congress>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Congress>>(_congressDal.GetAll(), Messages.CongressesListed);
         }
 
-        public IDataResult<Congress> GetBrandById(int id)
+        public IDataResult<Congress> GetCongressById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Congress>(_congressDal.Get(x => x.CongressId == id), Messages.CongressIsListed);
         }
 
         public IResult Update(Congress congress)
         {
-            throw new NotImplementedException();
+            _congressDal.Update(congress);
+            return new SuccessResult(Messages.CongressUpdated);
         }
     }
 }

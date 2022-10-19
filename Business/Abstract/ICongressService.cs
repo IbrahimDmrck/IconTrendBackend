@@ -10,8 +10,8 @@ namespace Business.Abstract
 {
     public interface ICongressService
     {
-        IDataResult<Congress> GetBrandById(int id);
-        IDataResult<Congress> GetAll();
+        IDataResult<Congress> GetCongressById(int id);
+        IDataResult<List<Congress>> GetAll();
         IResult Add(Congress congress);
         IResult Update(Congress congress);
         IResult Delete(Congress congress);

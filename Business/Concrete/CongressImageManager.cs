@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Result.Abstract;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -11,6 +12,13 @@ namespace Business.Abstract
 {
     public class CongressImageManager : ICongressImage
     {
+        ICongressImageDal _congressImageDal;
+
+        public CongressImageManager(ICongressImageDal congressImageDal)
+        {
+            _congressImageDal = congressImageDal;
+        }
+
         public IResult Add(IFormFile file, int congressId)
         {
             throw new NotImplementedException();
@@ -27,6 +35,11 @@ namespace Business.Abstract
         }
 
         public IDataResult<List<CongressImage>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<CongressImage> GetById(int congressId)
         {
             throw new NotImplementedException();
         }

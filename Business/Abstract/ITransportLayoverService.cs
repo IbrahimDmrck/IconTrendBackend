@@ -11,7 +11,7 @@ namespace Business.Abstract
     public interface ITransportLayoverService
     {
         IDataResult<TransportLayover> GetTransportLayoverById(int id);
-        IDataResult<TransportLayover> GetAll();
+        IDataResult<List<TransportLayover>> GetAll();
         IResult Add(TransportLayover transportLayover);
         IResult Update(TransportLayover transportLayover);
         IResult Delete(TransportLayover transportLayover);

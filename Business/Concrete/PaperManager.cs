@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Result.Abstract;
+using Core.Utilities.Result.Concrete;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,29 +14,39 @@ namespace Business.Concrete
 {
     public class PaperManager : IPaperService
     {
+        IPaperDal _paperDal;
+
+        public PaperManager(IPaperDal paperDal)
+        {
+            _paperDal = paperDal;
+        }
+
         public IResult Add(Paper paper)
         {
-            throw new NotImplementedException();
+            _paperDal.Add(paper);
+            return new SuccessResult(Messages.PaperIsAdded);
         }
 
         public IResult Delete(Paper paper)
         {
-            throw new NotImplementedException();
+            _paperDal.Delete(paper);
+            return new SuccessResult(Messages.PaperIsDeleted);
         }
 
-        public IDataResult<Paper> GetAll()
+        public IDataResult<List<Paper>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Paper>>(_paperDal.GetAll(), Messages.PapersListed);
         }
 
         public IDataResult<Paper> GetPaperById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Paper>(_paperDal.Get(x => x.PaperId == id), Messages.PaperIsListed);
         }
 
         public IResult Update(Paper paper)
         {
-            throw new NotImplementedException();
+            _paperDal.Update(paper);
+            return new SuccessResult(Messages.PaperIsUpdated);
         }
     }
 }

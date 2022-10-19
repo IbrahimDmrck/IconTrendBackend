@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Result.Abstract;
+using Core.Utilities.Result.Concrete;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,29 +14,39 @@ namespace Business.Concrete
 {
     public class TopicManager : ITopicService
     {
+        ITopicDal _topicDal;
+
+        public TopicManager(ITopicDal topicDal)
+        {
+            _topicDal = topicDal;
+        }
+
         public IResult Add(Topic topic)
         {
-            throw new NotImplementedException();
+            _topicDal.Add(topic);
+            return new SuccessResult(Messages.TopicIsAdded);
         }
 
         public IResult Delete(Topic topic)
         {
-            throw new NotImplementedException();
+            _topicDal.Delete(topic);
+            return new SuccessResult(Messages.TopicIsDeleted);
         }
 
-        public IDataResult<Topic> GetAll()
+        public IDataResult<List<Topic>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Topic>>(_topicDal.GetAll(), Messages.TopicsListed);
         }
 
         public IDataResult<Topic> GetTopicById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Topic>(_topicDal.Get(x => x.TopicId == id), Messages.TopicIsListed);
         }
 
         public IResult Update(Topic topic)
         {
-            throw new NotImplementedException();
+            _topicDal.Update(topic);
+            return new SuccessResult(Messages.TopicIsUpdated);
         }
     }
 }

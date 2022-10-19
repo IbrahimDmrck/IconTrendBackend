@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface ITopicService
     {
         IDataResult<Topic> GetTopicById(int id);
-        IDataResult<Topic> GetAll();
+        IDataResult<List<Topic>> GetAll();
         IResult Add(Topic topic);
         IResult Update(Topic topic);
         IResult Delete(Topic topic);
