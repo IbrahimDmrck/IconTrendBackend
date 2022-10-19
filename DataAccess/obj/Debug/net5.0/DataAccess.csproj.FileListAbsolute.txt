@@ -1,0 +1,11 @@
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.deps.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\ref\DataAccess.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.pdb
