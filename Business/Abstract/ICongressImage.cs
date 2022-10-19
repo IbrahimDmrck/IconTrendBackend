@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Core.Utilities.Result.Abstract;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +11,11 @@ namespace Business.Abstract
 {
     public interface ICongressImage
     {
+        IDataResult<List<CongressImage>> GetAll();
+        IDataResult<List<CongressImage>> GetCongressImage(int congressId);
+        IResult Add(IFormFile file ,int congressId);
+        IResult Update(CongressImage congressImage,IFormFile file);
+        IResult Delete(CongressImage congress);
+        IResult DeleteAllImagesOfCongressByCongressId(int congressId);
     }
 }

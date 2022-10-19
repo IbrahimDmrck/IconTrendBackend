@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Core.Utilities.Result.Abstract;
+using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,10 @@ namespace Business.Abstract
 {
     public interface ICongressService
     {
+        IDataResult<Congress> GetBrandById(int id);
+        IDataResult<Congress> GetAll();
+        IResult Add(Congress congress);
+        IResult Update(Congress congress);
+        IResult Delete(Congress congress);
     }
 }

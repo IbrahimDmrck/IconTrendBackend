@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class TransportLayoverManager : ITransportLayoverService
+    public class PaperManager : IPaperService
     {
-        public IResult Add(TransportLayover transportLayover)
+        public IResult Add(Paper paper)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Delete(TransportLayover transportLayover)
+        public IResult Delete(Paper paper)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<TransportLayover> GetAll()
+        public IDataResult<Paper> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<TransportLayover> GetTransportLayoverById(int id)
+        public IDataResult<Paper> GetPaperById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Update(TransportLayover transportLayover)
+        public IResult Update(Paper paper)
         {
             throw new NotImplementedException();
         }
