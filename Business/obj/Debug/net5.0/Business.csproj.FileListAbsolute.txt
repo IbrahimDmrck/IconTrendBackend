@@ -9,3 +9,4 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\ref\Business.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.csproj.AssemblyReference.cache

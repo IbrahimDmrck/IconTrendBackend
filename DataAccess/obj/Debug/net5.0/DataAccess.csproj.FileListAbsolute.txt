@@ -9,3 +9,4 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAc
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache

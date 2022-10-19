@@ -43,5 +43,7 @@ namespace Business.Constants
         public static string TransportLayoverIsListed="Ulaşım ve konaklama bilgisi listelendi";
 
 
+        public static string CongressImagesListed="Kongre görselleri listelendi";
+        public static string GetDefaultImage="Herhangi bir gösel bulunamadı , varsayılan görsel getirildi";
     }
 }
