@@ -59,5 +59,15 @@ namespace Business.Constants
         public static string LoginIsSuccessful="Giriş Başarılı";
         public static string UserIsRegitered="Kullanıcı kayıt edildi";
         public static string UserIsAlreadyExists="Böyle bir kullanıcı zaten var";
+
+
+        public static string UsersListed="Kullanıcılar Listelendi";
+        public static string UserIsListed="Kullanıcı Listelendi";
+        public static string UserIsNotExists="Böyle bir kullanıcı bulunamadı";
+        public static string UserEmaiIsExists="Bu e-posta kullanılıyor";
+        public static string UserEmailNotAvailable="Kullanıcı e-postası geçersiz";
+        public static string UserIsDeleted="Kullanıcı silindi";
+        public static string UserIsUpdate="Kullanıcı Güncellendi";
+        public static string UserIsAdded="Kullanıcı Eklendi";
     }
 }
