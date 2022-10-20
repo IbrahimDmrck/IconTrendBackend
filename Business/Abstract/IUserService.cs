@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Result.Abstract;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace Business.Abstract
         IResult Update(User user);
         IDataResult<List<OperationClaim>> GetClaims(User user);
         IDataResult<User> GetUserByMail(string email);
-        //IDataResult<UserDto> GetUserDtoById(int userId);
-        //IResult UpdateByDto(UserDto userDto);
-        //IDataResult<List<UserDto>> GetAllDto();
-        //IDataResult<UserDto> GetUserDtoByMail(string email)
+        IDataResult<UserDto> GetUserDtoById(int userId);
+        IResult UpdateByDto(UserDto userDto);
+        IDataResult<List<UserDto>> GetAllDto();
+        IDataResult<UserDto> GetUserDtoByMail(string email);
     }
 }
