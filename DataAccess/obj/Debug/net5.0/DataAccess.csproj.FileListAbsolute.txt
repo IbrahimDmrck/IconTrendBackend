@@ -10,3 +10,8 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAc
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Core.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entities.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entities.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Core.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CopyComplete
