@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,5 +46,6 @@ namespace Business.Constants
 
         public static string CongressImagesListed="Kongre görselleri listelendi";
         public static string GetDefaultImage="Herhangi bir gösel bulunamadı , varsayılan görsel getirildi";
+        public  static string AuthorizationDenied="Bu işlemi yapmak için yetkiniz yok";
     }
 }

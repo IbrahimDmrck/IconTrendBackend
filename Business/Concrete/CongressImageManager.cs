@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public class CongressImageManager : ICongressImage
+    public class CongressImageManager : ICongressImageService
     {
         ICongressImageDal _congressImageDal;
 

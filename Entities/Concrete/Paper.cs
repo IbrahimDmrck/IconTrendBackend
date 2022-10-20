@@ -14,6 +14,7 @@ namespace Entities.Concrete
         public int TopicId { get; set; }
         public string Title { get; set; }
         public DateTime SubmissionDate { get; set; }
+        public bool PaperStatus { get; set; }
         //public string Accepted { get; set; }
         //public string Student { get; set; }
         //public string Type { get; set; }
@@ -26,8 +27,8 @@ namespace Entities.Concrete
         //public string Comment { get; set; }
         //public string Abstract { get; set; }
         //public int EditTime { get; set; }
-       // public string PcNotes { get; set; }
-       // public string EditToken { get; set; }
-       // public string Password { get; set; }
+        // public string PcNotes { get; set; }
+        // public string EditToken { get; set; }
+        // public string Password { get; set; }
     }
 }

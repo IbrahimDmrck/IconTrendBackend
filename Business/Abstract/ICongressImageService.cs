@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICongressImage
+    public interface ICongressImageService
     {
         IDataResult<List<CongressImage>> GetAll();
         IDataResult<List<CongressImage>> GetCongressImage(int congressId);

@@ -6534,9 +6534,13 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Autofac >= 6.4.0",
+      "Autofac.Extensions.DependencyInjection >= 8.0.0",
+      "Autofac.Extras.DynamicProxy >= 6.0.1",
       "Core >= 1.0.0",
       "DataAccess >= 1.0.0",
       "Entities >= 1.0.0",
+      "FluentValidation >= 11.2.2",
       "Microsoft.AspNetCore.Http.Features >= 5.0.17"
     ]
   },
@@ -6594,6 +6598,22 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Autofac": {
+            "target": "Package",
+            "version": "[6.4.0, )"
+          },
+          "Autofac.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "Autofac.Extras.DynamicProxy": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.2.2, )"
+          },
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
             "version": "[5.0.17, )"
