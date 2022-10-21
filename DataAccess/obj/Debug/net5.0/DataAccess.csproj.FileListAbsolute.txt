@@ -15,3 +15,6 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entiti
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entities.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Core.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CopyComplete
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.dev.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache

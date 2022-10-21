@@ -11,7 +11,6 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.csproj.AssemblyReference.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.AssemblyInfoInputs.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.AssemblyInfo.cs

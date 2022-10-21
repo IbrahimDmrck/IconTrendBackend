@@ -9,4 +9,7 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\Core\bin\Debug\net5.0\Core.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\Core\obj\Debug\net5.0\Core.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Core\obj\Debug\net5.0\ref\Core.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Core\obj\Debug\net5.0\Core.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\Core\bin\Debug\net5.0\Core.runtimeconfig.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\Core\bin\Debug\net5.0\Core.runtimeconfig.dev.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\Core\obj\Debug\net5.0\Core.genruntimeconfig.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\Core\obj\Debug\net5.0\Core.csproj.AssemblyReference.cache

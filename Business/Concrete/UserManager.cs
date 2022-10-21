@@ -83,12 +83,14 @@ namespace Business.Concrete
 
         public IDataResult<UserDto> GetUserDtoById(int userId)
         {
-            return new SuccessDataResult<UserDto>(_userDal.GetUserDtos(x=>x.Id==userId).SingleOrDefault,Messages.UserIsListed);
+            return new SuccessDataResult<UserDto>(_userDal.GetUsersDtos(u => u.Id == userId).SingleOrDefault(), Messages.UserIsListed);
         }
+
+
 
         public IDataResult<UserDto> GetUserDtoByMail(string email)
         {
-            return new SuccessDataResult<UserDto>(_userDal.GetUserDtos(x=>x.Email==email).SingleOrDefault(),Messages.UserIsListed);
+            return new SuccessDataResult<UserDto>(_userDal.GetUsersDtos(x=>x.Email==email).SingleOrDefault(),Messages.UserIsListed);
         }
 
         public IResult Update(User user)

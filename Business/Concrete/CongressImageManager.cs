@@ -25,11 +25,11 @@ namespace Business.Abstract
 
         public IResult Add(IFormFile file, int congressId)
         {
-            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
-            if (rulesResult!=null)
-            {
-                return rulesResult;
-            }
+            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
+            //if (rulesResult!=null)
+            //{
+            //    return rulesResult;
+            //}
 
             var imageResult = FileHelper.Upload(file);
             if (!imageResult.Success)
@@ -50,11 +50,11 @@ namespace Business.Abstract
 
         public IResult Delete(CongressImage congress)
         {
-            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
-            if (rulesResult!=null)
-            {
-                return rulesResult;
-            }
+            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
+            //if (rulesResult!=null)
+            //{
+            //    return rulesResult;
+            //}
 
             var deletedImage = _congressImageDal.Get(x=>x.Id==congress.Id);
             var result = FileHelper.Delete(deletedImage.ImagePath);
@@ -92,11 +92,11 @@ namespace Business.Abstract
 
         public IResult Update(CongressImage congressImage, IFormFile file)
         {
-            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id),CheckIfCongressImageLimitExceeded(congressImage.CongressId));
-            if (rulesResult!=null)
-            {
-                return rulesResult;
-            }
+            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id),CheckIfCongressImageLimitExceeded(congressImage.CongressId));
+            //if (rulesResult!=null)
+            //{
+            //    return rulesResult;
+            //}
 
             var updateImage = _congressImageDal.Get(x=>x.Id==congressImage.Id);
             var result = FileHelper.Update(file,updateImage.ImagePath);
