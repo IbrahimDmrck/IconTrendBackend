@@ -24,7 +24,6 @@ namespace DataAccess.Concrete.Context
         public DbSet<PaperFile> PaperFiles { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<TransportLayover> TransportLayovers { get; set; }
-        public DbSet<Withdrawn> Withdrawns { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }

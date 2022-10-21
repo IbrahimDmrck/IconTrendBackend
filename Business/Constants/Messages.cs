@@ -47,6 +47,12 @@ namespace Business.Constants
 
         public static string CongressImagesListed="Kongre görselleri listelendi";
         public static string GetDefaultImage="Herhangi bir gösel bulunamadı , varsayılan görsel getirildi";
+        public static string CongressImageIsListed="Kongre görseli listelendi";
+        public static string CongressImageIsAdded="Kongre görseli eklendi";
+        public static string ErrorUpdateingImage="Görsel güncellenirken hata oluştu";
+        public static string CongressImageIsUpdate="Kongre görseli güncellendi";
+        public static string ErrorDeleteingImage="Görsel silinirken bir hata oluştu";
+        public static string CongressImageIsDeleted="Kongre Görseli Silindi";
 
 
         public  static string AuthorizationDenied="Bu işlemi yapmak için yetkiniz yok";
@@ -69,5 +75,6 @@ namespace Business.Constants
         public static string UserIsDeleted="Kullanıcı silindi";
         public static string UserIsUpdate="Kullanıcı Güncellendi";
         public static string UserIsAdded="Kullanıcı Eklendi";
+        
     }
 }

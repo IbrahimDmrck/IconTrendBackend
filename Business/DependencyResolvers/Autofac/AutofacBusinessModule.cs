@@ -43,8 +43,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<TransportLayoverManager>().As<ITransportLayoverService>().SingleInstance();
             builder.RegisterType<EfTransportLayoverDal>().As<ITransportLayoverDal>().SingleInstance();
 
-            builder.RegisterType<WithdrawnManager>().As<IWithdrawnService>().SingleInstance();
-            builder.RegisterType<EfWithdrawnDal>().As<IWithdrawnDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
