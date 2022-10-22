@@ -13,8 +13,7 @@ namespace Entities.Concrete
         [Key]
         public int CongressId { get; set; }
         public string CongressName { get; set; }
-        public string CongressEntranceImage { get; set; }
-        public string CongressRepresentativeImage { get; set; }
+        public string CongressPoster { get; set; }
         public string CongressAbout { get; set; }
         public string CongressCity { get; set; }
         public string CongressPlace { get; set; }

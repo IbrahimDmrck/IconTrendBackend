@@ -1,5 +1,4 @@
-﻿using Core.DataAccess;
-using Core.DataAccess.EntityFramework;
+﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Context;
 using Entities.Concrete;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCongressDal : EfEntityRepositoryBase<CongressPresident, IconTrendContext>, ICongressDal
+    public class EfScienceBoardDal : EfEntityRepositoryBase<ScienceBoard, IconTrendContext>, IScienceBoardDal
     {
     }
 }

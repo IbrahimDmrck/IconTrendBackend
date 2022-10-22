@@ -26,3 +26,4 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\ref\WebAPI.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\obj\Debug\net5.0\WebAPI.csproj.AssemblyReference.cache

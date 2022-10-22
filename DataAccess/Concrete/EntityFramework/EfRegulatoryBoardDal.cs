@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfPaperDal : EfEntityRepositoryBase<Paper, IconTrendContext>, IPaperDal
+    public class EfRegulatoryBoardDal : EfEntityRepositoryBase<RegulatoryBoard, IconTrendContext>, IRegulatoryBoardDal
     {
     }
 }

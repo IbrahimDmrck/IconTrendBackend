@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfPaperFileDal : EfEntityRepositoryBase<PaperFile, IconTrendContext>, IPaperFileDal
+    public class EfCongressPresidentDal : EfEntityRepositoryBase<CongressPresident, IconTrendContext>, ICongressPresidentDal
     {
     }
 }

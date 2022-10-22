@@ -12,9 +12,9 @@ namespace Entities.Concrete
     {
         [Key]
         public int Id { get; set; }
-        public int PopUpStatus { get; set; }
-        public string PopUpContent { get; set; }
-        public string PopUpContenEnglish { get; set; }
-        public DateTime ImportantDate { get; set; }
+        public string AnnounceTitle { get; set; }
+        public string AnnounceContent { get; set; }
+        public bool AnnounceStatus { get; set; }
+        public DateTime AnnounceDate { get; set; }
     }
 }

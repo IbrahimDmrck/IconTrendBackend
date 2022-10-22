@@ -31,11 +31,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EmailQueueManager>().As<IEmailQueueService>().SingleInstance();
             builder.RegisterType<EfEmailQueueDal>().As<IEmailQueueDal>().SingleInstance();
 
-            builder.RegisterType<PaperFileManager>().As<IPaperFileService>().SingleInstance();
-            builder.RegisterType<EfPaperFileDal>().As<IPaperFileDal>().SingleInstance();
-
-            builder.RegisterType<PaperManager>().As<IPaperService>().SingleInstance();
-            builder.RegisterType<EfPaperDal>().As<IPaperDal>().SingleInstance();
 
             builder.RegisterType<TopicManager>().As<ITopicService>().SingleInstance();
             builder.RegisterType<EfTopicDal>().As<ITopicDal>().SingleInstance();

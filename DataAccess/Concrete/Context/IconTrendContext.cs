@@ -25,11 +25,9 @@ namespace DataAccess.Concrete.Context
         }
 
         public virtual DbSet<Announcement> Announcements { get; set; }
-        public virtual DbSet<Congress> Congresses { get; set; }
+        public virtual DbSet<CongressPresident> Congresses { get; set; }
         public virtual DbSet<CongressImage> CongressImages { get; set; }
         public virtual DbSet<EmailQueue> EmailQueues { get; set; }
-        public virtual DbSet<Paper> Papers { get; set; }
-        public virtual DbSet<PaperFile> PaperFiles { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<TransportLayover> TransportLayovers { get; set; }
         public virtual DbSet<User> Users { get; set; }

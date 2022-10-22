@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IPaperDal : IEntityRepository<Paper>
+    public interface ICongressPresidentDal : IEntityRepository<CongressPresident>
     {
     }
 }

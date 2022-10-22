@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IPaperFileDal : IEntityRepository<PaperFile>
+    public interface IRegulatoryBoardDal : IEntityRepository<RegulatoryBoard>
     {
     }
 }
