@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCongressDal : EfEntityRepositoryBase<CongressPresident, IconTrendContext>, ICongressDal
+    public class EfCongressDal : EfEntityRepositoryBase<Congress, IconTrendContext>, ICongressDal
     {
     }
 }

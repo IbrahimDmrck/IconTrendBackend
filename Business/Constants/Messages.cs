@@ -75,6 +75,26 @@ namespace Business.Constants
         public static string UserIsDeleted="Kullanıcı silindi";
         public static string UserIsUpdate="Kullanıcı Güncellendi";
         public static string UserIsAdded="Kullanıcı Eklendi";
-        
+
+
+        public static string ScienceBoardISCreated="Bilim kurulu oluşturuldu";
+        public static string ScienceBoardISDeleted="Bilim kurulu silindi";
+        public static string ScienceBoardsListed="Bilim kurulları listelendi";
+        public static string ScienceBoardIsListed = "Bilim kurulu listelendi";
+        public static string ScienceBoardISUpdated="Bilim kurlu güncellendi";
+
+
+        public static string RegulatoryBoardIsCreated="Düzenleme kurulu oluşturuldu";
+        public static string RegulatoryBoardIsDeleted="Düzenleme kurulu silindi";
+        public static string RegulatoryBoardIsUpdated="Düzenleme kurulu güncellendi";
+        public static string RegulatoryBoardsListed="Düzenleme kurulları listelendi";
+        public static string RegulatoryBoardIsListed="Düzenleme kurulu listelendi";
+
+
+        public static string CongressPresidentIsAdded="Kongre başkanı eklendi";
+        public static string CongressPresidentIsDeleted="Kongre başkanı silindi";
+        public static string CongressPresidentIsUpdated="kongre başkanı güncellendi";
+        public static string CongressPresidentsListed="Kongre başkanları listelendi";
+        public static string CongressPresidentIsListed="Kongre başkanı listelendi";
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class ScienceBoard:IEntity
+    public class ScienceBoard : IEntity
     {
         public int Id { get; set; }
         public string ScienceBoardMemberName { get; set; }
