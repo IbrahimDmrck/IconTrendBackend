@@ -33,6 +33,7 @@ namespace DataAccess.Concrete.Context
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<OperationClaim> OperationClaims { get; set; }
         public virtual DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public virtual DbSet<TransportLayoverImage> TransportLayoverImages { get; set; }
 
     }
 }

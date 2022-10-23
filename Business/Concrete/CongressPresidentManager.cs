@@ -46,7 +46,7 @@ namespace Business.Concrete
 
         public IDataResult<CongressPresident> GetCongressPresidentById(int id)
         {
-            return new SuccessDataResult<CongressPresident>(_congressPresidentDal.Get(x=>x.CongressPresidentId==id),Messages.CongressPresidentIsListed);
+            return new SuccessDataResult<CongressPresident>(_congressPresidentDal.Get(x=>x.Id==id),Messages.CongressPresidentIsListed);
         }
 
         

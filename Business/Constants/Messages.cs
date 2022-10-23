@@ -99,6 +99,15 @@ namespace Business.Constants
         public static string CongressPresidentIsUpdated="kongre başkanı güncellendi";
         public static string CongressPresidentsListed="Kongre başkanları listelendi";
         public static string CongressPresidentIsListed="Kongre başkanı listelendi";
-      
+
+        public static string TransportImageIsAdded="Ulaşım görseli eklendi";
+        public static string TransportImageIsDeleted="Ulaşım görseli silindi";
+        public static string NoPictureOfTheTransport="Ulaşım görseli yok";
+        public static string TransportImagesListed="Ulaşım görselleri listelendi";
+        public static string TransportImageIsUpdate="Ulaşım görseli güncellendi";
+        public static string TransportImageIdNotExist="Ulaşım görseli mevcut değil";
+        public static string TransportImageLimitExceeded="Daha fazla görsel yüklenemez";
+        public static string TransportImageIsListed="Ulaşım görseli listelendi";
+        public static string TransportIsListed="Ulaşımlar listelendi";
     }
 }

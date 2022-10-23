@@ -94,11 +94,11 @@ namespace Business.Abstract
 
         public IDataResult<List<CongressImage>> GetCongressImage(int congressId)
         {
-            var checkIfCarImage = CheckIfCongressHasImage(congressId);
-            var images = checkIfCarImage.Success
-                ? checkIfCarImage.Data
+            var checkIfCongressImage = CheckIfCongressHasImage(congressId);
+            var images = checkIfCongressImage.Success
+                ? checkIfCongressImage.Data
                 : _congressImageDal.GetAll(c => c.CongressId == congressId);
-            return new SuccessDataResult<List<CongressImage>>(images, checkIfCarImage.Message);
+            return new SuccessDataResult<List<CongressImage>>(images, checkIfCongressImage.Message);
         }
 
         public IResult Update(CongressImage congressImage, IFormFile file)

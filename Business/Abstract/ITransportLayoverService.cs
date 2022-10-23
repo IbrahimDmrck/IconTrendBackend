@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Result.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Business.Abstract
         IResult Add(TransportLayover transportLayover);
         IResult Update(TransportLayover transportLayover);
         IResult Delete(TransportLayover transportLayover);
+
+        IDataResult<TransportLayoverDto> GetTransportDetails(int transportId);
     }
 }

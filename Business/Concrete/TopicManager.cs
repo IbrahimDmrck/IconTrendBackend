@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         public IDataResult<Topic> GetTopicById(int id)
         {
-            return new SuccessDataResult<Topic>(_topicDal.Get(x => x.TopicId == id), Messages.TopicIsListed);
+            return new SuccessDataResult<Topic>(_topicDal.Get(x => x.Id == id), Messages.TopicIsListed);
         }
 
         public IResult Update(Topic topic)

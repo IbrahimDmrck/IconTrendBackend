@@ -4,6 +4,7 @@ using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace Business.Concrete
         public IDataResult<List<TransportLayover>> GetAll()
         {
             return new SuccessDataResult<List<TransportLayover>>(_transportLayoverDal.GetAll(), Messages.TransportLayoversListed);
+        }
+
+        public IDataResult<TransportLayoverDto> GetTransportDetails(int transportId)
+        {
+            return new SuccessDataResult<TransportLayoverDto>(_transportLayoverDal.GetTransportDetails(c => c.TransportId == transportId).SingleOrDefault(), Messages.TransportIsListed);
         }
 
         public IDataResult<TransportLayover> GetTransportLayoverById(int id)

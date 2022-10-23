@@ -4,6 +4,7 @@ using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace Business.Concrete
         public IDataResult<Congress> GetCongressById(int id)
         {
             return new SuccessDataResult<Congress>(_congressDal.Get(x => x.CongressId == id), Messages.CongressIsListed);
+        }
+
+        public IDataResult<CongressDetailDto> GetCongressDetails(int congressId)
+        {
+            return new SuccessDataResult<CongressDetailDto>(_congressDal.GetCongressDetails(c => c.CongressId == congressId).SingleOrDefault(), Messages.CongressIsListed);
         }
 
         public IResult Update(Congress congress)

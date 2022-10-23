@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class CongressDetailDto
+    public class CongressDetailDto:IDto
     {
         public int CongressId { get; set; }
         public string CongressName { get; set; }
