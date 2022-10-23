@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class init : Migration
+    public partial class finish_the_entities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,10 +14,10 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PopUpStatus = table.Column<int>(nullable: false),
-                    PopUpContent = table.Column<string>(nullable: true),
-                    PopUpContenEnglish = table.Column<string>(nullable: true),
-                    ImportantDate = table.Column<DateTime>(nullable: false)
+                    AnnounceTitle = table.Column<string>(nullable: true),
+                    AnnounceContent = table.Column<string>(nullable: true),
+                    AnnounceStatus = table.Column<bool>(nullable: false),
+                    AnnounceDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,9 +30,8 @@ namespace DataAccess.Migrations
                 {
                     CongressId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CongressPresidentId = table.Column<int>(nullable: false),
                     CongressName = table.Column<string>(nullable: true),
-                    CongressEntranceImage = table.Column<string>(nullable: true),
-                    CongressRepresentativeImage = table.Column<string>(nullable: true),
                     CongressAbout = table.Column<string>(nullable: true),
                     CongressCity = table.Column<string>(nullable: true),
                     CongressPlace = table.Column<string>(nullable: true),
@@ -60,22 +59,17 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmailQueues",
+                name: "CongressPresidents",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Queued = table.Column<DateTime>(nullable: false),
-                    Sent = table.Column<DateTime>(nullable: false),
-                    Tries = table.Column<int>(nullable: false),
-                    To = table.Column<string>(nullable: true),
-                    Subject = table.Column<string>(nullable: true),
-                    Body = table.Column<string>(nullable: true),
-                    ReferenceId = table.Column<string>(nullable: true)
+                    CongressId = table.Column<int>(nullable: false),
+                    CongressPresidentName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmailQueues", x => x.Id);
+                    table.PrimaryKey("PK_CongressPresidents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,50 +86,63 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaperFiles",
+                name: "RegulatoryBoards",
                 columns: table => new
                 {
-                    FileId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PaperId = table.Column<int>(nullable: false),
-                    FileName = table.Column<string>(nullable: true),
-                    FilePath = table.Column<string>(nullable: true),
-                    Datetime = table.Column<DateTime>(nullable: false)
+                    CongressId = table.Column<int>(nullable: false),
+                    RegulatoryBoardMemberName = table.Column<string>(nullable: true),
+                    Univercity = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaperFiles", x => x.FileId);
+                    table.PrimaryKey("PK_RegulatoryBoards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Papers",
+                name: "ScienceBoards",
                 columns: table => new
                 {
-                    PaperId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    TopicId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: true),
-                    SubmissionDate = table.Column<DateTime>(nullable: false),
-                    PaperStatus = table.Column<bool>(nullable: false)
+                    CongressId = table.Column<int>(nullable: false),
+                    ScienceBoardMemberName = table.Column<string>(nullable: true),
+                    Univercity = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Papers", x => x.PaperId);
+                    table.PrimaryKey("PK_ScienceBoards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Topics",
                 columns: table => new
                 {
-                    TopicId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CongressId = table.Column<int>(nullable: false),
                     TopicName = table.Column<string>(nullable: true),
-                    Short = table.Column<string>(nullable: true)
+                    Category = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Topics", x => x.TopicId);
+                    table.PrimaryKey("PK_Topics", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TransportLayoverImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    TransportLayoverId = table.Column<int>(nullable: false),
+                    ImagePath = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransportLayoverImages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,22 +186,7 @@ namespace DataAccess.Migrations
                     Email = table.Column<string>(nullable: true),
                     PasswordHash = table.Column<byte[]>(nullable: true),
                     PasswordSalt = table.Column<byte[]>(nullable: true),
-                    status = table.Column<bool>(nullable: false),
-                    Departman = table.Column<string>(nullable: true),
-                    Country = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    PostaCode = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Biography = table.Column<string>(nullable: true),
-                    Orcid = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    Facebook = table.Column<string>(nullable: true),
-                    Twitter = table.Column<string>(nullable: true),
-                    Linkedin = table.Column<string>(nullable: true),
-                    Position = table.Column<int>(nullable: false),
-                    PositionTitle = table.Column<string>(nullable: true),
-                    Organization = table.Column<string>(nullable: true)
+                    status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,19 +206,22 @@ namespace DataAccess.Migrations
                 name: "CongressImages");
 
             migrationBuilder.DropTable(
-                name: "EmailQueues");
+                name: "CongressPresidents");
 
             migrationBuilder.DropTable(
                 name: "OperationClaims");
 
             migrationBuilder.DropTable(
-                name: "PaperFiles");
+                name: "RegulatoryBoards");
 
             migrationBuilder.DropTable(
-                name: "Papers");
+                name: "ScienceBoards");
 
             migrationBuilder.DropTable(
                 name: "Topics");
+
+            migrationBuilder.DropTable(
+                name: "TransportLayoverImages");
 
             migrationBuilder.DropTable(
                 name: "TransportLayovers");

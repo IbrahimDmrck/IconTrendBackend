@@ -39,9 +39,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<TransportLayover>>(_transportLayoverDal.GetAll(), Messages.TransportLayoversListed);
         }
 
-        public IDataResult<TransportLayoverDto> GetTransportDetails(int transportId)
+        public IDataResult<TransportLayoverDetailDto> GetTransportDetails(int transportId)
         {
-            return new SuccessDataResult<TransportLayoverDto>(_transportLayoverDal.GetTransportDetails(c => c.TransportId == transportId).SingleOrDefault(), Messages.TransportIsListed);
+            return new SuccessDataResult<TransportLayoverDetailDto>(_transportLayoverDal.GetTransportDetails(c => c.TransportId == transportId).SingleOrDefault(), Messages.TransportIsListed);
         }
 
         public IDataResult<TransportLayover> GetTransportLayoverById(int id)

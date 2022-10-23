@@ -37,25 +37,7 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Biography")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("City")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Departman")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Facebook")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("FirstName")
@@ -64,38 +46,11 @@ namespace DataAccess.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Linkedin")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Orcid")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Organization")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("longblob");
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("longblob");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PositionTitle")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("PostaCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Twitter")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("status")
                         .HasColumnType("tinyint(1)");
@@ -128,17 +83,17 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ImportantDate")
+                    b.Property<string>("AnnounceContent")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("AnnounceDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("PopUpContenEnglish")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<bool>("AnnounceStatus")
+                        .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("PopUpContent")
+                    b.Property<string>("AnnounceTitle")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("PopUpStatus")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -160,17 +115,14 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CongressDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("CongressEntranceImage")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("CongressName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CongressPlace")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CongressRepresentativeImage")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("CongressPresidentId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("CongressStatus")
                         .HasColumnType("tinyint(1)");
@@ -200,100 +152,79 @@ namespace DataAccess.Migrations
                     b.ToTable("CongressImages");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.EmailQueue", b =>
+            modelBuilder.Entity("Entities.Concrete.CongressPresident", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Body")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("Queued")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ReferenceId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("Sent")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Subject")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("To")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("Tries")
+                    b.Property<int>("CongressId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CongressPresidentName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.ToTable("EmailQueues");
+                    b.ToTable("CongressPresidents");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.Paper", b =>
+            modelBuilder.Entity("Entities.Concrete.RegulatoryBoard", b =>
                 {
-                    b.Property<int>("PaperId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("PaperStatus")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<int>("CongressId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("SubmissionDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("RegulatoryBoardMemberName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("TopicId")
-                        .HasColumnType("int");
+                    b.Property<string>("Univercity")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("PaperId");
-
-                    b.ToTable("Papers");
+                    b.ToTable("RegulatoryBoards");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.PaperFile", b =>
+            modelBuilder.Entity("Entities.Concrete.ScienceBoard", b =>
                 {
-                    b.Property<int>("FileId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Datetime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("FileName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("FilePath")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("PaperId")
+                    b.Property<int>("CongressId")
                         .HasColumnType("int");
 
-                    b.HasKey("FileId");
+                    b.Property<string>("ScienceBoardMemberName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.ToTable("PaperFiles");
+                    b.Property<string>("Univercity")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ScienceBoards");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Topic", b =>
                 {
-                    b.Property<int>("TopicId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Short")
+                    b.Property<string>("Category")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("CongressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("TopicName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("TopicId");
+                    b.HasKey("Id");
 
                     b.ToTable("Topics");
                 });
@@ -319,6 +250,26 @@ namespace DataAccess.Migrations
                     b.HasKey("TransportId");
 
                     b.ToTable("TransportLayovers");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.TransportLayoverImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("TransportLayoverId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TransportLayoverImages");
                 });
 #pragma warning restore 612, 618
         }

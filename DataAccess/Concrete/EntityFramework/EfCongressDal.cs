@@ -33,7 +33,45 @@ namespace DataAccess.Concrete.EntityFramework
                                  CongressPlace=congress.CongressPlace,
                                  CongressDate=congress.CongressDate,
                                  CongressStatus=congress.CongressStatus,
-                                 Topics=((from t in context.Topics where
+                                 ScienceBoards=((from s in context.ScienceBoards where
+                                                 (congress.CongressId==s.CongressId)
+                                                 select new ScienceBoard 
+                                                 {
+                                                     Id=s.Id,
+                                                     CongressId=s.CongressId,
+                                                     ScienceBoardMemberName=s.ScienceBoardMemberName,
+                                                     Univercity=s.Univercity
+                                                 }).ToList()).Count()==0
+                                                 ? null //new List<ScienceBoard> {new ScienceBoard{}}
+                                                 :(from s in context.ScienceBoards where
+                                                   (congress.CongressId==s.CongressId)
+                                                   select new ScienceBoard 
+                                                   {
+                                                       Id=s.Id,
+                                                       CongressId=s.CongressId,
+                                                       ScienceBoardMemberName=s.ScienceBoardMemberName,
+                                                       Univercity=s.Univercity
+                                                   }).ToList(),
+                                 RegulatoryBoards =((from r in context.RegulatoryBoards where
+                                                    (congress.CongressId==r.CongressId)
+                                                    select new RegulatoryBoard
+                                                    {
+                                                        Id=r.Id,
+                                                        CongressId=r.CongressId,
+                                                        RegulatoryBoardMemberName=r.RegulatoryBoardMemberName,
+                                                        Univercity=r.Univercity
+                                                    }).ToList()).Count==0
+                                                    ? null //new List<RegulatoryBoard> {new RegulatoryBoard{}}
+                                                    :(from r in context.RegulatoryBoards where
+                                                      (congress.CongressId==r.CongressId)
+                                                      select new RegulatoryBoard 
+                                                      {
+                                                          Id=r.Id,
+                                                          CongressId=r.CongressId,
+                                                          RegulatoryBoardMemberName=r.RegulatoryBoardMemberName,
+                                                          Univercity=r.Univercity
+                                                      }).ToList(),
+                                 Topics =((from t in context.Topics where
                                           (congress.CongressId==t.CongressId)
                                           select new Topic 
                                           {

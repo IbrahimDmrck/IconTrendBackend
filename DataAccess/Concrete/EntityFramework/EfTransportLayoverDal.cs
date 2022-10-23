@@ -14,9 +14,45 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfTransportLayoverDal : EfEntityRepositoryBase<TransportLayover, IconTrendContext>, ITransportLayoverDal
     {
-        public List<TransportLayoverDto> GetTransportDetails(Expression<Func<TransportLayoverDto, bool>> filter = null)
+        public List<TransportLayoverDetailDto> GetTransportDetails(Expression<Func<TransportLayoverDetailDto, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (var context = new IconTrendContext())
+            {
+                var result = from transport in context.TransportLayovers
+                             select new TransportLayoverDetailDto
+                             {
+                                 TransportId = transport.TransportId,
+                                 Capacity = transport.Capacity,
+                                 Description = transport.Description,
+                                 MinDemand = transport.MinDemand,
+                                 Price = transport.Price,
+                                 TransportLayoverImages = ((from ti in context.TransportLayoverImages
+                                                            where
+                  (transport.TransportId == ti.TransportLayoverId)
+                                                            select new TransportLayoverImage
+                                                            {
+                                                                Id = ti.Id,
+                                                                TransportLayoverId = ti.TransportLayoverId,
+                                                                Date = ti.Date,
+                                                                ImagePath = ti.ImagePath
+                                                            }).ToList()).Count() == 0
+                                                          ? null
+                                                          : (from ti in context.TransportLayoverImages
+                                                             where (transport.TransportId == ti.TransportLayoverId)
+                                                             select new TransportLayoverImage
+                                                             {
+                                                                 Id = ti.Id,
+                                                                 TransportLayoverId = ti.TransportLayoverId,
+                                                                 Date = ti.Date,
+                                                                 ImagePath = ti.ImagePath
+                                                             }).ToList()
+                             };
+
+                return filter == null
+                   ? result.ToList()
+                   : result.Where(filter).ToList();
+
+            }
         }
     }
 }

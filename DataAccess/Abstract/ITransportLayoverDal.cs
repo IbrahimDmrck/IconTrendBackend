@@ -12,6 +12,6 @@ namespace DataAccess.Abstract
 {
     public interface ITransportLayoverDal : IEntityRepository<TransportLayover>
     {
-        List<TransportLayoverDto> GetTransportDetails(Expression<Func<TransportLayoverDto, bool>> filter = null);
+        List<TransportLayoverDetailDto> GetTransportDetails(Expression<Func<TransportLayoverDetailDto, bool>> filter = null);
     }
 }

@@ -28,9 +28,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CongressManager>().As<ICongressService>().SingleInstance();
             builder.RegisterType<EfCongressDal>().As<ICongressDal>().SingleInstance();
 
-            builder.RegisterType<EmailQueueManager>().As<IEmailQueueService>().SingleInstance();
-            builder.RegisterType<EfEmailQueueDal>().As<IEmailQueueDal>().SingleInstance();
-
 
             builder.RegisterType<TopicManager>().As<ITopicService>().SingleInstance();
             builder.RegisterType<EfTopicDal>().As<ITopicDal>().SingleInstance();

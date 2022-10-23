@@ -17,6 +17,6 @@ namespace Business.Abstract
         IResult Update(TransportLayover transportLayover);
         IResult Delete(TransportLayover transportLayover);
 
-        IDataResult<TransportLayoverDto> GetTransportDetails(int transportId);
+        IDataResult<TransportLayoverDetailDto> GetTransportDetails(int transportId);
     }
 }

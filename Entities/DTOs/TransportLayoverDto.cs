@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities.DTOs
 {
-    public class TransportLayoverDto:IDto
+    public class TransportLayoverDetailDto:IDto
     {
         public int TransportId { get; set; }
         public int Capacity { get; set; }
