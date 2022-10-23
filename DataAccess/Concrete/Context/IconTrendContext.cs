@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.Context
 {
     public class IconTrendContext : DbContext
     {
-       
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.Context
         }
 
         public virtual DbSet<Announcement> Announcements { get; set; }
-        public virtual DbSet<CongressPresident> Congresses { get; set; }
+        public virtual DbSet<Congress> Congresses { get; set; }
         public virtual DbSet<CongressImage> CongressImages { get; set; }
         public virtual DbSet<EmailQueue> EmailQueues { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
@@ -34,6 +34,9 @@ namespace DataAccess.Concrete.Context
         public virtual DbSet<OperationClaim> OperationClaims { get; set; }
         public virtual DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public virtual DbSet<TransportLayoverImage> TransportLayoverImages { get; set; }
+        public virtual DbSet<CongressPresident> CongressPresidents { get; set; }
+        public virtual DbSet<RegulatoryBoard> RegulatoryBoards { get; set; }
+        public virtual DbSet<ScienceBoard> ScienceBoards { get; set; }
 
     }
 }
