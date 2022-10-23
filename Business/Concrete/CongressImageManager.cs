@@ -25,11 +25,11 @@ namespace Business.Abstract
 
         public IResult Add(IFormFile file, int congressId)
         {
-            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
-            //if (rulesResult!=null)
-            //{
-            //    return rulesResult;
-            //}
+            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
+            if (rulesResult != null)
+            {
+                return rulesResult;
+            }
 
             var imageResult = FileHelper.Upload(file);
             if (!imageResult.Success)
@@ -50,11 +50,11 @@ namespace Business.Abstract
 
         public IResult Delete(CongressImage congress)
         {
-            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
-            //if (rulesResult!=null)
-            //{
-            //    return rulesResult;
-            //}
+            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
+            if (rulesResult != null)
+            {
+                return rulesResult;
+            }
 
             var deletedImage = _congressImageDal.Get(x=>x.Id==congress.Id);
             var result = FileHelper.Delete(deletedImage.ImagePath);
@@ -68,7 +68,18 @@ namespace Business.Abstract
 
         public IResult DeleteAllImagesOfCongressByCongressId(int congressId)
         {
-            throw new NotImplementedException();
+            var deletedImages = _congressImageDal.GetAll(x=>x.CongressId==congressId);
+            if (deletedImages==null)
+            {
+                return new ErrorResult(Messages.NoPictureOfTheCongress);
+            }
+            foreach (var deletedImage in deletedImages)
+            {
+                _congressImageDal.Delete(deletedImage);
+                FileHelper.Delete(deletedImage.ImagePath);
+
+            }
+            return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
         public IDataResult<List<CongressImage>> GetAll()
@@ -92,11 +103,11 @@ namespace Business.Abstract
 
         public IResult Update(CongressImage congressImage, IFormFile file)
         {
-            //IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id),CheckIfCongressImageLimitExceeded(congressImage.CongressId));
-            //if (rulesResult!=null)
-            //{
-            //    return rulesResult;
-            //}
+            IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id), CheckIfCongressImageLimitExceeded(congressImage.CongressId));
+            if (rulesResult != null)
+            {
+                return rulesResult;
+            }
 
             var updateImage = _congressImageDal.Get(x=>x.Id==congressImage.Id);
             var result = FileHelper.Update(file,updateImage.ImagePath);
@@ -113,6 +124,26 @@ namespace Business.Abstract
 
 
         //Business - Rule
+
+        private IResult CheckIfCongressImageLimitExceeded(int congressId)
+        {
+            int result = _congressImageDal.GetAll(c => c.CongressId == congressId).Count;
+            if (result >= 5)
+            {
+                return new ErrorResult(Messages.CongressImageLimitExceeded);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCongressImageIdExist(int imageId)
+        {
+            var result = _congressImageDal.GetAll(c => c.Id == imageId).Any();
+            if (!result)
+            {
+                return new ErrorResult(Messages.CongressImageIdNotExist);
+            }
+            return new SuccessResult();
+        }
 
         private IDataResult<List<CongressImage>> CheckIfCongressHasImage(int congressId)
         {

@@ -53,6 +53,9 @@ namespace Business.Constants
         public static string CongressImageIsUpdate="Kongre görseli güncellendi";
         public static string ErrorDeleteingImage="Görsel silinirken bir hata oluştu";
         public static string CongressImageIsDeleted="Kongre Görseli Silindi";
+        public static string NoPictureOfTheCongress="Kongre görseli yok";
+        public static string CongressImageLimitExceeded="Daha fazla kongre görseli yüklenemez";
+        public static string CongressImageIdNotExist="Kongre görseli mevcut değil";
 
 
         public  static string AuthorizationDenied="Bu işlemi yapmak için yetkiniz yok";
@@ -96,5 +99,6 @@ namespace Business.Constants
         public static string CongressPresidentIsUpdated="kongre başkanı güncellendi";
         public static string CongressPresidentsListed="Kongre başkanları listelendi";
         public static string CongressPresidentIsListed="Kongre başkanı listelendi";
+      
     }
 }

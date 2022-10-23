@@ -9,7 +9,8 @@ namespace Entities.Concrete
 {
     public class CongressPresident:IEntity
     {
-        public int CongressPresidentId { get; set; }
+        public int Id { get; set; }
+        public int CongressId { get; set; }
         public string CongressPresidentName { get; set; }
     }
 }

@@ -21,29 +21,29 @@ namespace Business.Concrete
             _congressDal = congressDal;
         }
 
-        public IResult Add(CongressPresident congress)
+        public IResult Add(Congress congress)
         {
              _congressDal.Add(congress);
             return new SuccessResult(Messages.CongressAdded);
         }
 
-        public IResult Delete(CongressPresident congress)
+        public IResult Delete(Congress congress)
         {
             _congressDal.Delete(congress);
             return new SuccessResult(Messages.CongressDeleted);
         }
 
-        public IDataResult<List<CongressPresident>> GetAll()
+        public IDataResult<List<Congress>> GetAll()
         {
-            return new SuccessDataResult<List<CongressPresident>>(_congressDal.GetAll(), Messages.CongressesListed);
+            return new SuccessDataResult<List<Congress>>(_congressDal.GetAll(), Messages.CongressesListed);
         }
 
-        public IDataResult<CongressPresident> GetCongressById(int id)
+        public IDataResult<Congress> GetCongressById(int id)
         {
-            return new SuccessDataResult<CongressPresident>(_congressDal.Get(x => x.CongressId == id), Messages.CongressIsListed);
+            return new SuccessDataResult<Congress>(_congressDal.Get(x => x.CongressId == id), Messages.CongressIsListed);
         }
 
-        public IResult Update(CongressPresident congress)
+        public IResult Update(Congress congress)
         {
             _congressDal.Update(congress);
             return new SuccessResult(Messages.CongressUpdated);

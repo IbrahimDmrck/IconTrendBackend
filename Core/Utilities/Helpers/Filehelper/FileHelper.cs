@@ -22,12 +22,6 @@ namespace Core.Utilities.Helpers.Filehelper
                 FolderName = "images",
                 ExtensionMimeType = RecognizedFileTypes.Images,
                 MaximumUploadSizeInByte = ConvertMbToByte("50")
-            },
-            new FileCategory
-            {
-                FolderName = "documents",
-                ExtensionMimeType = RecognizedFileTypes.Documents,
-                MaximumUploadSizeInByte = ConvertMbToByte("100")
             }
         };
 

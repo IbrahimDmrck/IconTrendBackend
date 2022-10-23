@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Result.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace Business.Abstract
 {
     public interface ICongressService
     {
-        IDataResult<CongressPresident> GetCongressById(int id);
-        IDataResult<List<CongressPresident>> GetAll();
-        IResult Add(CongressPresident congress);
-        IResult Update(CongressPresident congress);
-        IResult Delete(CongressPresident congress);
+        IDataResult<Congress> GetCongressById(int id);
+        IDataResult<List<Congress>> GetAll();
+        IResult Add(Congress congress);
+        IResult Update(Congress congress);
+        IResult Delete(Congress congress);
+
+        //IDataResult<CongressDetailDto> GetCongressDetails(int carId);
     }
 }

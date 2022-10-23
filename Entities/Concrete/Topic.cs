@@ -11,8 +11,9 @@ namespace Entities.Concrete
     public class Topic : IEntity
     {
         [Key]
-        public int TopicId { get; set; }
+        public int Id { get; set; }
+        public int CongressId { get; set; }
         public string TopicName { get; set; }
-        public string Short { get; set; }
+        public string Category { get; set; }
     }
 }
