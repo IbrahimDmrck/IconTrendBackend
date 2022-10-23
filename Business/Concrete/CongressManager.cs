@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -22,12 +23,14 @@ namespace Business.Concrete
             _congressDal = congressDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(Congress congress)
         {
              _congressDal.Add(congress);
             return new SuccessResult(Messages.CongressAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(Congress congress)
         {
             _congressDal.Delete(congress);
@@ -49,6 +52,7 @@ namespace Business.Concrete
             return new SuccessDataResult<CongressDetailDto>(_congressDal.GetCongressDetails(c => c.CongressId == congressId).SingleOrDefault(), Messages.CongressIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(Congress congress)
         {
             _congressDal.Update(congress);

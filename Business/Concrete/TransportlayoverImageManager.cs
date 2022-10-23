@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
@@ -24,6 +25,7 @@ namespace Business.Concrete
             _transportLayoverImageDal = transportLayoverImageDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(IFormFile file, int transportId)
         {
 
@@ -50,6 +52,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportImageIsAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(TransportLayoverImage transport)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfTransportImageIdExist(transport.Id));
@@ -68,6 +71,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportImageIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IResult DeleteAllImagesOfTransportByTransportImageId(int tranportId)
         {
             var deletedImages = _transportLayoverImageDal.GetAll(x => x.TransportLayoverId == tranportId);
@@ -84,16 +88,19 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportImageIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<List<TransportLayoverImage>> GetAll()
         {
             return new SuccessDataResult<List<TransportLayoverImage>>(_transportLayoverImageDal.GetAll(), Messages.TransportImagesListed);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<TransportLayoverImage> GetById(int transortImageId)
         {
             return new SuccessDataResult<TransportLayoverImage>(_transportLayoverImageDal.Get(x => x.Id == transortImageId), Messages.TransportImageIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<List<TransportLayoverImage>> GetTransportImage(int transportId)
         {
             var checkIfCarImage = CheckIfTransportHasImage(transportId);
@@ -103,6 +110,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<TransportLayoverImage>>(images, checkIfCarImage.Message);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(TransportLayoverImage transportImage, IFormFile file)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfTransportImageIdExist(transportImage.Id), CheckIfTransportImageLimitExceeded(transportImage.TransportLayoverId));

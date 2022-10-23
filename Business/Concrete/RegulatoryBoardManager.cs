@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -21,6 +22,7 @@ namespace Business.Concrete
             _regulatoryBoardDal = regulatoryBoardDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(RegulatoryBoard regulatoryBoard)
         {
             _regulatoryBoardDal.Add(regulatoryBoard);
@@ -28,12 +30,14 @@ namespace Business.Concrete
 
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(RegulatoryBoard regulatoryBoard)
         {
             _regulatoryBoardDal.Delete(regulatoryBoard);
             return new SuccessResult(Messages.RegulatoryBoardIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(RegulatoryBoard regulatoryBoard)
         {
             _regulatoryBoardDal.Update(regulatoryBoard);

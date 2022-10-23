@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -21,18 +22,21 @@ namespace Business.Concrete
             _congressPresidentDal = congressPresidentDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(CongressPresident congressPresident)
         {
             _congressPresidentDal.Add(congressPresident);
             return new SuccessResult(Messages.CongressPresidentIsAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(CongressPresident congressPresident)
         {
             _congressPresidentDal.Delete(congressPresident);
             return new SuccessResult(Messages.CongressPresidentIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(CongressPresident congressPresident)
         {
             _congressPresidentDal.Add(congressPresident);

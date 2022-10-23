@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -21,18 +22,21 @@ namespace Business.Concrete
             _scienceBoardDal = scienceBoardDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(ScienceBoard scienceBoard)
         {
             _scienceBoardDal.Add(scienceBoard);
             return new SuccessResult(Messages.ScienceBoardISCreated);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(ScienceBoard scienceBoard)
         {
             _scienceBoardDal.Delete(scienceBoard);
             return new SuccessResult(Messages.ScienceBoardISDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(ScienceBoard scienceBoard)
         {
             _scienceBoardDal.Update(scienceBoard);

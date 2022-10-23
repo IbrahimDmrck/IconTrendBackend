@@ -1,4 +1,5 @@
-﻿using Business.Constants;
+﻿using Business.BusinessAspects.Autofac;
+using Business.Constants;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -23,6 +24,7 @@ namespace Business.Abstract
             _congressImageDal = congressImageDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(IFormFile file, int congressId)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
@@ -48,6 +50,7 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(CongressImage congress)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
@@ -66,6 +69,7 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IResult DeleteAllImagesOfCongressByCongressId(int congressId)
         {
             var deletedImages = _congressImageDal.GetAll(x=>x.CongressId==congressId);
@@ -82,16 +86,19 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<List<CongressImage>> GetAll()
         {
             return new SuccessDataResult<List<CongressImage>>(_congressImageDal.GetAll(), Messages.CongressImagesListed);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<CongressImage> GetById(int congressImageId)
         {
             return new SuccessDataResult<CongressImage>(_congressImageDal.Get(x=>x.Id==congressImageId),Messages.CongressImageIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<List<CongressImage>> GetCongressImage(int congressId)
         {
             var checkIfCongressImage = CheckIfCongressHasImage(congressId);
@@ -101,6 +108,7 @@ namespace Business.Abstract
             return new SuccessDataResult<List<CongressImage>>(images, checkIfCongressImage.Message);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(CongressImage congressImage, IFormFile file)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id), CheckIfCongressImageLimitExceeded(congressImage.CongressId));

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -22,12 +23,14 @@ namespace Business.Concrete
             _transportLayoverDal = transportLayoverDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(TransportLayover transportLayover)
         {
             _transportLayoverDal.Add(transportLayover);
             return new SuccessResult(Messages.TransportLayoverIsAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(TransportLayover transportLayover)
         {
             _transportLayoverDal.Delete(transportLayover);
@@ -44,11 +47,13 @@ namespace Business.Concrete
             return new SuccessDataResult<TransportLayoverDetailDto>(_transportLayoverDal.GetTransportDetails(c => c.TransportId == transportId).SingleOrDefault(), Messages.TransportIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<TransportLayover> GetTransportLayoverById(int id)
         {
             return new SuccessDataResult<TransportLayover>(_transportLayoverDal.Get(x => x.TransportId == id), Messages.TransportLayoverIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(TransportLayover transportLayover)
         {
             _transportLayoverDal.Update(transportLayover);

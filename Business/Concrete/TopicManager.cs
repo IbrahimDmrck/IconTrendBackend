@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -21,12 +22,14 @@ namespace Business.Concrete
             _topicDal = topicDal;
         }
 
+        [SecuredOperation("Admin")]
         public IResult Add(Topic topic)
         {
             _topicDal.Add(topic);
             return new SuccessResult(Messages.TopicIsAdded);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Delete(Topic topic)
         {
             _topicDal.Delete(topic);
@@ -43,6 +46,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Topic>(_topicDal.Get(x => x.Id == id), Messages.TopicIsListed);
         }
 
+        [SecuredOperation("Admin")]
         public IResult Update(Topic topic)
         {
             _topicDal.Update(topic);

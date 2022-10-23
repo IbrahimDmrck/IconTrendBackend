@@ -28,6 +28,14 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CongressManager>().As<ICongressService>().SingleInstance();
             builder.RegisterType<EfCongressDal>().As<ICongressDal>().SingleInstance();
 
+            builder.RegisterType<CongressPresidentManager>().As<ICongressPresidentService>().SingleInstance();
+            builder.RegisterType<EfCongressPresidentDal>().As<ICongressPresidentDal>().SingleInstance();
+
+            builder.RegisterType<RegulatoryBoardManager>().As<IRegulatoryBoardService>().SingleInstance();
+            builder.RegisterType<EfRegulatoryBoardDal>().As<IRegulatoryBoardDal>().SingleInstance();
+
+            builder.RegisterType<ScienceBoardManager>().As<IScienceBoardService>().SingleInstance();
+            builder.RegisterType<EfScienceBoardDal>().As<IScienceBoardDal>().SingleInstance();
 
             builder.RegisterType<TopicManager>().As<ITopicService>().SingleInstance();
             builder.RegisterType<EfTopicDal>().As<ITopicDal>().SingleInstance();
@@ -35,9 +43,13 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<TransportLayoverManager>().As<ITransportLayoverService>().SingleInstance();
             builder.RegisterType<EfTransportLayoverDal>().As<ITransportLayoverDal>().SingleInstance();
 
+            builder.RegisterType<TransportlayoverImageManager>().As<ITransportLayoverImageService>().SingleInstance();
+            builder.RegisterType<EfTransportLayoverImageDal>().As<ITransportLayoverImageDal>().SingleInstance();
+
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
+            builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
