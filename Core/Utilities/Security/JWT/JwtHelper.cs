@@ -19,7 +19,6 @@ namespace Core.Utilities.Security.JWT
         private TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
 
-
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;

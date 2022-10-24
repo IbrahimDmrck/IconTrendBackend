@@ -22,21 +22,21 @@ namespace Business.Concrete
             _announcementDal = announcementDal;
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
         public IResult Add(Announcement announcement)
         {
             _announcementDal.Add(announcement);
             return new SuccessResult(Messages.Announced);
         }
 
-        [SecuredOperation("Admin")]
+      //  [SecuredOperation("Admin")]
         public IResult Delete(Announcement announcement)
         {
             _announcementDal.Delete(announcement);
             return new SuccessResult(Messages.AnnounceDeleted);
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
         public IResult Update(Announcement announcement)
         {
             _announcementDal.Update(announcement);

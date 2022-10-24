@@ -28,12 +28,11 @@ namespace Business.Concrete
 
         public IResult ChangePassword(ChangePasswordModel updatedUser)
         {
-            UserForLoginDto  checkedUser = new UserForLoginDto
+            UserForLoginDto checkedUser = new UserForLoginDto
             {
-                Email=updatedUser.Email,
-                Password=updatedUser.OldPassword
+                Email = updatedUser.Email,
+                Password = updatedUser.OldPassword
             };
-
             var loginResult = Login(checkedUser);
             if (loginResult.Success)
             {
@@ -45,6 +44,7 @@ namespace Business.Concrete
                 _userService.Update(user);
                 return new SuccessResult(Messages.PasswordIsChanged);
             }
+
             return new ErrorResult(loginResult.Message);
         }
 

@@ -35,8 +35,6 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\FileHelper
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -70,3 +68,6 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Business.p
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Core.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\DataAccess.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Entities.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\WebAPI\bin\Debug\net5.0\Microsoft.Bcl.HashCode.dll
