@@ -33,63 +33,68 @@ namespace DataAccess.Concrete.EntityFramework
                                  CongressPlace=congress.CongressPlace,
                                  CongressDate=congress.CongressDate,
                                  CongressStatus=congress.CongressStatus,
-                                 ScienceBoards=((from s in context.ScienceBoards where
-                                                 (congress.CongressId==s.CongressId)
-                                                 select new ScienceBoard 
-                                                 {
-                                                     Id=s.Id,
-                                                     CongressId=s.CongressId,
-                                                     ScienceBoardMemberName=s.ScienceBoardMemberName,
-                                                     Univercity=s.Univercity
-                                                 }).ToList()).Count()==0
-                                                 ? null //new List<ScienceBoard> {new ScienceBoard{}}
-                                                 :(from s in context.ScienceBoards where
-                                                   (congress.CongressId==s.CongressId)
-                                                   select new ScienceBoard 
+                                 ScienceBoards = ((from s in context.ScienceBoards
+                                                   where
+                   (congress.CongressId == s.CongressId)
+                                                   select new ScienceBoard
                                                    {
-                                                       Id=s.Id,
-                                                       CongressId=s.CongressId,
-                                                       ScienceBoardMemberName=s.ScienceBoardMemberName,
-                                                       Univercity=s.Univercity
-                                                   }).ToList(),
-                                 RegulatoryBoards =((from r in context.RegulatoryBoards where
-                                                    (congress.CongressId==r.CongressId)
-                                                    select new RegulatoryBoard
+                                                       Id = s.Id,
+                                                       CongressId = s.CongressId,
+                                                       ScienceBoardMemberName = s.ScienceBoardMemberName,
+                                                       Univercity = s.Univercity
+                                                   }).ToList()).Count() == 0
+                                                 ? new List<ScienceBoard> { new ScienceBoard { Id = -1, CongressId = -1, ScienceBoardMemberName = "", Univercity = "" } }
+                                                 : (from s in context.ScienceBoards
+                                                    where
+                    (congress.CongressId == s.CongressId)
+                                                    select new ScienceBoard
                                                     {
-                                                        Id=r.Id,
-                                                        CongressId=r.CongressId,
-                                                        RegulatoryBoardMemberName=r.RegulatoryBoardMemberName,
-                                                        Univercity=r.Univercity
-                                                    }).ToList()).Count==0
-                                                    ? null //new List<RegulatoryBoard> {new RegulatoryBoard{}}
-                                                    :(from r in context.RegulatoryBoards where
-                                                      (congress.CongressId==r.CongressId)
-                                                      select new RegulatoryBoard 
+                                                        Id = s.Id,
+                                                        CongressId = s.CongressId,
+                                                        ScienceBoardMemberName = s.ScienceBoardMemberName,
+                                                        Univercity = s.Univercity
+                                                    }).ToList(),
+                                 RegulatoryBoards = ((from r in context.RegulatoryBoards
+                                                      where
+                  (congress.CongressId == r.CongressId)
+                                                      select new RegulatoryBoard
                                                       {
-                                                          Id=r.Id,
-                                                          CongressId=r.CongressId,
-                                                          RegulatoryBoardMemberName=r.RegulatoryBoardMemberName,
-                                                          Univercity=r.Univercity
-                                                      }).ToList(),
-                                 Topics =((from t in context.Topics where
-                                          (congress.CongressId==t.CongressId)
-                                          select new Topic 
-                                          {
-                                            Id=t.Id,
-                                            CongressId=t.CongressId,
-                                            Category=t.Category,
-                                            TopicName=t.TopicName
-                                          }).ToList()).Count==0 
-                                          ? null //new List<Topic> { new Topic { Category="Yok",TopicName="Yok"} }
-                                          : (from t in context.Topics
-                                            where (congress.CongressId==t.CongressId)
-                                            select new Topic 
+                                                          Id = r.Id,
+                                                          CongressId = r.CongressId,
+                                                          RegulatoryBoardMemberName = r.RegulatoryBoardMemberName,
+                                                          Univercity = r.Univercity
+                                                      }).ToList()).Count == 0
+                                                    ? new List<RegulatoryBoard> { new RegulatoryBoard { Id = 1, CongressId = 1, RegulatoryBoardMemberName = "yok", Univercity = "yok" } }
+                                                    : (from r in context.RegulatoryBoards
+                                                       where
+                    (congress.CongressId == r.CongressId)
+                                                       select new RegulatoryBoard
+                                                       {
+                                                           Id = r.Id,
+                                                           CongressId = r.CongressId,
+                                                           RegulatoryBoardMemberName = r.RegulatoryBoardMemberName,
+                                                           Univercity = r.Univercity
+                                                       }).ToList(),
+                                 Topics = ((from t in context.Topics
+                                            where
+                  (congress.CongressId == t.CongressId)
+                                            select new Topic
                                             {
-                                                Id=t.Id,
-                                                CongressId=t.CongressId,
-                                                Category=t.Category,
-                                                TopicName=t.TopicName
-                                            }).ToList(),
+                                                Id = t.Id,
+                                                CongressId = t.CongressId,
+                                                Category = t.Category,
+                                                TopicName = t.TopicName
+                                            }).ToList()).Count == 0
+                                          ? new List<Topic> { new Topic { Id = 1, CongressId = 1, Category = "Yok", TopicName = "Yok" } }
+                                          : (from t in context.Topics
+                                             where (congress.CongressId == t.CongressId)
+                                             select new Topic
+                                             {
+                                                 Id = t.Id,
+                                                 CongressId = t.CongressId,
+                                                 Category = t.Category,
+                                                 TopicName = t.TopicName
+                                             }).ToList(),
                                  CongressImages = ((from ci in context.CongressImages
                                                     where (congress.CongressId == ci.CongressId)
                                                     select new CongressImage

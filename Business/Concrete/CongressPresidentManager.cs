@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -43,11 +44,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CongressPresidentIsUpdated);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<CongressPresident>> GetAll()
         {
             return new SuccessDataResult<List<CongressPresident>>(_congressPresidentDal.GetAll(),Messages.CongressPresidentsListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<CongressPresident> GetCongressPresidentById(int id)
         {
             return new SuccessDataResult<CongressPresident>(_congressPresidentDal.Get(x=>x.Id==id),Messages.CongressPresidentIsListed);

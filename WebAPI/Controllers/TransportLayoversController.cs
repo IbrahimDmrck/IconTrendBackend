@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -53,6 +54,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(TransportLayover transportLayover)
         {
@@ -64,6 +66,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("delete")]
         public IActionResult Delete(TransportLayover transportLayover)
         {
@@ -75,6 +78,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update(TransportLayover transportLayover)
         {

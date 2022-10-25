@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -37,16 +38,19 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CongressDeleted);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<Congress>> GetAll()
         {
             return new SuccessDataResult<List<Congress>>(_congressDal.GetAll(), Messages.CongressesListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<Congress> GetCongressById(int id)
         {
             return new SuccessDataResult<Congress>(_congressDal.Get(x => x.CongressId == id), Messages.CongressIsListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<CongressDetailDto> GetCongressDetails(int congressId)
         {
             return new SuccessDataResult<CongressDetailDto>(_congressDal.GetCongressDetails(c => c.CongressId == congressId).SingleOrDefault(), Messages.CongressIsListed);

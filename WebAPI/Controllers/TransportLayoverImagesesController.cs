@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,7 @@ namespace WebAPI.Controllers
             _transportLayoverImageService = transportLayoverImageService;
         }
 
+       
         [HttpGet("getall")]
         public IActionResult getAll()
         {
@@ -32,7 +34,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getallbytransportlayoverid")]
-        public IActionResult GetAllByCongressId(int transportId)
+        public IActionResult GetAllByTransportId(int transportId)
         {
             var result = _transportLayoverImageService.GetTransportImage(transportId);
             if (result.Success)
@@ -42,6 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add([FromForm] int transportId, [FromForm] IFormFile transportImage)
         {
@@ -64,6 +67,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update([FromForm] TransportLayoverImage transportLayoverImage, [FromForm] IFormFile imageFile)
         {

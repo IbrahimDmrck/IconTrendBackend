@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -44,11 +45,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.RegulatoryBoardIsUpdated);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<RegulatoryBoard>> GetAll()
         {
             return new SuccessDataResult<List<RegulatoryBoard>>(_regulatoryBoardDal.GetAll(),Messages.RegulatoryBoardsListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<RegulatoryBoard> GetRegulatoryBoardById(int id)
         {
             return new SuccessDataResult<RegulatoryBoard>(_regulatoryBoardDal.Get(x=>x.Id==id),Messages.RegulatoryBoardIsListed);

@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -36,11 +37,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TopicIsDeleted);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<Topic>> GetAll()
         {
             return new SuccessDataResult<List<Topic>>(_topicDal.GetAll(), Messages.TopicsListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<Topic> GetTopicById(int id)
         {
             return new SuccessDataResult<Topic>(_topicDal.Get(x => x.Id == id), Messages.TopicIsListed);

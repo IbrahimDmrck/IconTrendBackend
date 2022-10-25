@@ -19,6 +19,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new IconTrendContext())
             {
                 var result = from transport in context.TransportLayovers
+                             join image in context.TransportLayoverImages
+                            on transport.TransportId equals image.TransportLayoverId
                              select new TransportLayoverDetailDto
                              {
                                  TransportId = transport.TransportId,

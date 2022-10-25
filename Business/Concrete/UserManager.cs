@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Business;
@@ -49,11 +50,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserIsDeleted);
         }
 
+        //[CacheAspect(10)]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.UsersListed);
         }
 
+      //  [CacheAspect(10)]
         public IDataResult<List<UserDto>> GetAllDto()
         {
             return new SuccessDataResult<List<UserDto>>(_userDal.GetUsersDtos(),Messages.UsersListed);

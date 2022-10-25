@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -37,17 +38,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportLayoverIsDeleted);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<TransportLayover>> GetAll()
         {
             return new SuccessDataResult<List<TransportLayover>>(_transportLayoverDal.GetAll(), Messages.TransportLayoversListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<TransportLayoverDetailDto> GetTransportDetails(int transportId)
         {
             return new SuccessDataResult<TransportLayoverDetailDto>(_transportLayoverDal.GetTransportDetails(c => c.TransportId == transportId).SingleOrDefault(), Messages.TransportIsListed);
         }
 
         [SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<TransportLayover> GetTransportLayoverById(int id)
         {
             return new SuccessDataResult<TransportLayover>(_transportLayoverDal.Get(x => x.TransportId == id), Messages.TransportLayoverIsListed);

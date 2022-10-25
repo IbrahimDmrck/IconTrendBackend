@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,7 @@ namespace WebAPI.Controllers
             _announcementService = announcementService;
         }
 
+       
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -42,6 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(Announcement announcement)
         {
@@ -53,6 +56,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("delete")]
         public IActionResult Delete(Announcement announcement)
         {
@@ -64,6 +68,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update(Announcement announcement)
         {

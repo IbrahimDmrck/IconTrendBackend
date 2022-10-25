@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -88,19 +89,22 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportImageIsDeleted);
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<List<TransportLayoverImage>> GetAll()
         {
             return new SuccessDataResult<List<TransportLayoverImage>>(_transportLayoverImageDal.GetAll(), Messages.TransportImagesListed);
         }
 
-        [SecuredOperation("Admin")]
+        //[SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<TransportLayoverImage> GetById(int transortImageId)
         {
             return new SuccessDataResult<TransportLayoverImage>(_transportLayoverImageDal.Get(x => x.Id == transortImageId), Messages.TransportImageIsListed);
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<List<TransportLayoverImage>> GetTransportImage(int transportId)
         {
             var checkIfCarImage = CheckIfTransportHasImage(transportId);

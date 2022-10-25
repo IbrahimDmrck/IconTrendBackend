@@ -1,5 +1,6 @@
 ﻿using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -86,19 +87,21 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
-       // [SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetAll()
         {
             return new SuccessDataResult<List<CongressImage>>(_congressImageDal.GetAll(), Messages.CongressImagesListed);
         }
 
-        [SecuredOperation("Admin")]
+        //[SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<CongressImage> GetById(int congressImageId)
         {
             return new SuccessDataResult<CongressImage>(_congressImageDal.Get(x=>x.Id==congressImageId),Messages.CongressImageIsListed);
         }
 
-        [SecuredOperation("Admin")]
+        //[SecuredOperation("Admin")]
+        [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetCongressImage(int congressId)
         {
             var checkIfCongressImage = CheckIfCongressHasImage(congressId);
