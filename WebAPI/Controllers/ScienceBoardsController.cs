@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Business.Abstract;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,5 +13,66 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ScienceBoardsController : ControllerBase
     {
+        private readonly IScienceBoardService _scienceBoardService;
+
+        public ScienceBoardsController(IScienceBoardService scienceBoardService)
+        {
+            _scienceBoardService = scienceBoardService;
+        }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _scienceBoardService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
+        {
+            var result = _scienceBoardService.GetScienceBoardById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(ScienceBoard scienceBoard)
+        {
+            var result = _scienceBoardService.Add(scienceBoard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(ScienceBoard scienceBoard)
+        {
+            var result = _scienceBoardService.Delete(scienceBoard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(ScienceBoard scienceBoard)
+        {
+            var result = _scienceBoardService.Update(scienceBoard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
-using Entities.Concrete;
+using Core.Entities.Concrete;
+using Entities.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,19 +13,20 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoongressPresidentsController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly ICongressPresidentService _congressPresidentService;
+        private readonly IUserService _userService;
 
-        public CoongressPresidentsController(ICongressPresidentService congressPresidentService)
+        public UsersController(IUserService userService)
         {
-            _congressPresidentService = congressPresidentService;
+            _userService = userService;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _congressPresidentService.GetAll();
+            var result = _userService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,10 +34,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+       // [Authorize(Roles = "admin")]
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _congressPresidentService.GetCongressPresidentById(id);
+            var result = _userService.GetUserDtoById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,9 +47,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(CongressPresident congressPresident)
+        public IActionResult Add(User user)
         {
-            var result = _congressPresidentService.Add(congressPresident);
+            var result = _userService.Add(user);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,9 +58,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(CongressPresident congressPresident)
+        public IActionResult Delete([FromForm] int id)
         {
-            var result = _congressPresidentService.Delete(congressPresident);
+            var result = _userService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +69,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(CongressPresident congressPresident)
+        public IActionResult Update(UserDto user)
         {
-            var result = _congressPresidentService.Update(congressPresident);
+            var result = _userService.UpdateByDto(user);
             if (result.Success)
             {
                 return Ok(result);

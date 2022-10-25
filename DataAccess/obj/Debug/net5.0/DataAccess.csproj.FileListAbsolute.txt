@@ -1,8 +1,3 @@
-C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache
-C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
-C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
-C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.deps.json
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\ref\DataAccess.dll
@@ -11,6 +6,11 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Core.d
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entities.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Entities.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\bin\Debug\net5.0\Core.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
+C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CopyComplete
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
