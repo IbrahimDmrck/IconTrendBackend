@@ -1,15 +1,12 @@
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.deps.json
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\ref\Business.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.pdb
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.csproj.AssemblyReference.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.AssemblyInfoInputs.cache
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.AssemblyInfo.cs
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.csproj.CoreCompileInputs.cache
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\ref\Business.dll
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.pdb
-C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.csproj.AssemblyReference.cache
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.deps.json
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\ref\Business.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Business.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Core.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\DataAccess.dll
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Entities.dll
@@ -17,3 +14,6 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Core.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\DataAccess.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\bin\Debug\net5.0\Entities.pdb
 C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.csproj.CopyComplete
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\ref\Business.dll
+C:\Users\ibrah\source\repos\IconTrendsBackend\Business\obj\Debug\net5.0\Business.pdb

@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
@@ -23,6 +25,7 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             var rulesResult = BusinessRules.Run(CheckIfEmailExist(user.Email));
@@ -56,6 +59,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<UserDto>>(_userDal.GetUsersDtos(),Messages.UsersListed);
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             var rulesResult = BusinessRules.Run(CheckIfUserIdExist(user.Id));
@@ -93,6 +97,7 @@ namespace Business.Concrete
             return new SuccessDataResult<UserDto>(_userDal.GetUsersDtos(x=>x.Email==email).SingleOrDefault(),Messages.UserIsListed);
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
             var rulesResult = BusinessRules.Run(CheckIfUserIdExist(user.Id),CheckIfEmailAvailable(user.Email));
@@ -104,6 +109,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserIsUpdate);
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult UpdateByDto(UserDto userDto)
         {
             var rulesResult = BusinessRules.Run(CheckIfUserIdExist(userDto.Id),CheckIfEmailAvailable(userDto.Email));

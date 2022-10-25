@@ -17,9 +17,9 @@ namespace DataAccess.Concrete.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //MySql veritabanı bağlantı adresi
-            optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=root;password=;database=IconTrendsDb")
-                .UseLoggerFactory(LoggerFactory.Create(b => b
-                 .AddFilter(level => level >= LogLevel.Information))).EnableSensitiveDataLogging().EnableDetailedErrors();
+            optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=;database=IconTrendsDb");
+                //.UseLoggerFactory(LoggerFactory.Create(b => b
+                // .AddFilter(level => level >= LogLevel.Information))).EnableSensitiveDataLogging().EnableDetailedErrors();
 
 
         }

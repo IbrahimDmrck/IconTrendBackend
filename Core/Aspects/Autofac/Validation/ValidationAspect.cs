@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Validation
 {
-   public class ValidationAspect : MethodInterception
+    public class ValidationAspect : MethodInterception
     {
         private Type _validatorType;
 
@@ -20,10 +20,8 @@ namespace Core.Aspects.Autofac.Validation
             {
                 throw new System.Exception("Bu bir doğrulama sınıfı değil");
             }
-
             _validatorType = validatorType;
         }
-
         protected override void OnBefore(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);
@@ -31,7 +29,7 @@ namespace Core.Aspects.Autofac.Validation
             var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
             foreach (var entity in entities)
             {
-                ValidationTool.Validate(validator,entity);
+                ValidationTool.Validate(validator, entity);
             }
         }
     }

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2CA11C4E-051B-4986-96DD-1D5BA2620A53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconTrendsPresentation", "IconTrendsPresentation\IconTrendsPresentation.csproj", "{052A37CB-DE14-456F-8CDF-56D5C1FD1F3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconTrendsPresentation", "IconTrendsPresentation\IconTrendsPresentation.csproj", "{052A37CB-DE14-456F-8CDF-56D5C1FD1F3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

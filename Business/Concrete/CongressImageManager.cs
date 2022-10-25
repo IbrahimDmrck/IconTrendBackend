@@ -86,7 +86,7 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
         public IDataResult<List<CongressImage>> GetAll()
         {
             return new SuccessDataResult<List<CongressImage>>(_congressImageDal.GetAll(), Messages.CongressImagesListed);
