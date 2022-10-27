@@ -4,6 +4,7 @@ using Core.Extensions.Exception;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
+using DataAccess.Concrete.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,8 +35,9 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
+            services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
             {
@@ -81,7 +83,7 @@ namespace WebAPI
 
             app.UseRouting();
 
-            app.UseAuthentication();
+           // app.UseAuthentication();
 
             app.UseAuthorization();
 

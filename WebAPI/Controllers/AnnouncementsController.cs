@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
             var result = _announcementService.GetAll();
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
             return BadRequest(result);
         }

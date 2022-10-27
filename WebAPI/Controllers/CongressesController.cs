@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Dataaccess;
 
 namespace WebAPI.Controllers
 {
@@ -32,16 +33,28 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getall")]
+
+        [HttpGet]
         public IActionResult GetAll()
         {
             var result = _congressService.GetAll();
             if (result.Success)
             {
-                return Ok(result);
+                return Ok(result.Data);
             }
             return BadRequest(result);
         }
+
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    using (var context = new Context())
+        //    {
+
+        //        var result = context.Congresses.ToList();
+        //        return Ok(result);
+        //    }
+        //}
 
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
