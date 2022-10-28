@@ -1,0 +1,32 @@
+﻿@using IconTrendsPresentation.Models
+@model Announcement
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="col-11 m-4">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Duyuru Oluştur</h6>
+        <form method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Duyuru Başlığı</label>
+                <input type="text" asp-for="@Model.AnnounceTitle" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Duyuru İçeriği</label>
+                <textarea id="content" asp-for="@Model.AnnounceContent" rows="5" cols="10" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="datetime" class="form-label">Duyuru Tarihi</label>
+                <input id="datetime" asp-for="@Model.AnnounceDate" type="datetime-local" class="form-control bg-white" />
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Duyuru Tarihi</label>
+                <input id="status" asp-for="@Model.AnnounceStatus" type="number" max="1" min="0" class="form-control bg-white"  required/>
+            </div>
+            <button type="submit" class="btn btn-success">Oluştur</button>
+        </form>
+    </div>
+</div>
+

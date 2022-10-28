@@ -179,3 +179,4 @@ C:\Users\ibrah\source\repos\IconTrendsBackend\IconTrendsPresentation\obj\Debug\n
 C:\Users\ibrah\source\repos\IconTrendsBackend\IconTrendsPresentation\obj\Debug\net5.0\Razor\Views\Announcement\Index.cshtml.g.cs
 C:\Users\ibrah\source\repos\IconTrendsBackend\IconTrendsPresentation\obj\Debug\net5.0\Razor\Views\Topic\Index.cshtml.g.cs
 C:\Users\ibrah\source\repos\IconTrendsBackend\IconTrendsPresentation\obj\Debug\net5.0\Razor\Views\TransportLayover\Index.cshtml.g.cs
+C:\Users\ibrah\source\repos\IconTrendsBackend\IconTrendsPresentation\obj\Debug\net5.0\Razor\Views\Announcement\Add.cshtml.g.cs

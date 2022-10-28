@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(Announcement announcement)
         {
