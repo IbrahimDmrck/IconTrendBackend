@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
             var result = _transportLayoverService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -61,7 +61,7 @@ namespace WebAPI.Controllers
             var result = _transportLayoverService.Add(transportLayover);
             if (result.Success)
             {
-                return Ok();
+                return Ok(result);
             }
             return BadRequest(result);
         }

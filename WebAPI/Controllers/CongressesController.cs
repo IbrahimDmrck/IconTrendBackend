@@ -34,27 +34,16 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _congressService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
-
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    using (var context = new Context())
-        //    {
-
-        //        var result = context.Congresses.ToList();
-        //        return Ok(result);
-        //    }
-        //}
 
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)

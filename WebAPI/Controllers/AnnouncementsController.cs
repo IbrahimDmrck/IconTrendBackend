@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Concrete.Context;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,14 +22,14 @@ namespace WebAPI.Controllers
             _announcementService = announcementService;
         }
 
-       
+
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _announcementService.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -44,7 +45,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(Announcement announcement)
         {
@@ -56,10 +57,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         [HttpPost("delete")]
         public IActionResult Delete(Announcement announcement)
         {
+          
             var result = _announcementService.Delete(announcement);
             if (result.Success)
             {
@@ -68,7 +70,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update(Announcement announcement)
         {
