@@ -38,7 +38,7 @@ namespace DataAccess.Concrete.EntityFramework
                                                                 Date = ti.Date,
                                                                 ImagePath = ti.ImagePath
                                                             }).ToList()).Count() == 0
-                                                          ? null
+                                                          ? new List<TransportLayoverImage> { new TransportLayoverImage { Id = -1, TransportLayoverId = transport.TransportId, Date = DateTime.Now, ImagePath = "/images/default.jpg" } }
                                                           : (from ti in context.TransportLayoverImages
                                                              where (transport.TransportId == ti.TransportLayoverId)
                                                              select new TransportLayoverImage
