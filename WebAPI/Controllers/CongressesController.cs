@@ -33,6 +33,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcongressesswithdetails")]
+        public IActionResult GetDetails()
+        {
+            var result = _congressService.GetCongressesWithDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -56,7 +66,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       
         [HttpPost("add")]
         public IActionResult Add(Congress congress)
         {

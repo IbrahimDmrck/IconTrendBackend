@@ -1,7 +1,5 @@
 ﻿using Business.Abstract;
-using Core.Entities.Concrete;
-using Entities.DTOs;
-using Microsoft.AspNetCore.Authorization;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,20 +11,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AnnounceImagesController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IAnnounceImageService _announceImageService;
 
-        public UsersController(IUserService userService)
+        public AnnounceImagesController(IAnnounceImageService announceImageService)
         {
-            _userService = userService;
+            _announceImageService = announceImageService;
         }
 
-       // [Authorize(Roles = "Admin")]
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _announceImageService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -34,11 +31,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "admin")]
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        [HttpGet("getallbyannounceid")]
+        public IActionResult GetAllByAnnounceId(int announceId)
         {
-            var result = _userService.GetUserDtoById(id);
+            var result = _announceImageService.GetAnnounceImage(announceId);
             if (result.Success)
             {
                 return Ok(result);
@@ -46,11 +42,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add([FromForm] int announceId, [FromForm] IFormFile announceImage)
         {
-            var result = _userService.Add(user);
+            var result = _announceImageService.Add(announceImage, announceId);
             if (result.Success)
             {
                 return Ok(result);
@@ -58,11 +53,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin,User")]
         [HttpPost("delete")]
-        public IActionResult Delete([FromForm] int id)
+        public IActionResult Delete(AnnounceImage announceImage)
         {
-            var result = _userService.Delete(id);
+            var result = _announceImageService.Delete(announceImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -70,16 +64,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin,User")]
         [HttpPost("update")]
-        public IActionResult Update(UserDto user)
+        public IActionResult Update([FromForm] AnnounceImage announceImage, [FromForm] IFormFile imageFile)
         {
-            var result = _userService.UpdateByDto(user);
+            var result = _announceImageService.Update(announceImage, imageFile);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
+
     }
 }

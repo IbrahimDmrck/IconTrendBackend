@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       
         [HttpPost("add")]
         public IActionResult Add(CongressPresident congressPresident)
         {

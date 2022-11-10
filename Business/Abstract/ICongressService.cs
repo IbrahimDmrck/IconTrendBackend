@@ -16,7 +16,7 @@ namespace Business.Abstract
         IResult Add(Congress congress);
         IResult Update(Congress congress);
         IResult Delete(Congress congress);
-
+        IDataResult<List<CongressDetailDto>> GetCongressesWithDetails();
         IDataResult<CongressDetailDto> GetCongressDetails(int congressId);
     }
 }

@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult getAll()
+        public IActionResult GetAll()
         {
             var result = _congressImageService.GetAll();
             if (result.Success)

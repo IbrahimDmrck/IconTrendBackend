@@ -12,8 +12,9 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CongressPresidentValidator()
         {
-            RuleFor(x => x.CongressPresidentName).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
-            RuleFor(x => x.CongressId).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+         
+            RuleFor(x => x.CongressPresidentName).MinimumLength(2).WithMessage("Kongre Başkanı Adı En Az 2 Karakter Olabilir");
+            RuleFor(x => x.CongressPresidentName).MaximumLength(50).WithMessage("Kongre Başkanı Adı En Fazla 50 Karakter Olabilir");
         }
     }
 }

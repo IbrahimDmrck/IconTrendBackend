@@ -24,6 +24,7 @@ namespace DataAccess.Concrete.Context
 
         }
 
+        public virtual DbSet<AnnounceImage> AnnounceImages { get; set; }
         public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Congress> Congresses { get; set; }
         public virtual DbSet<CongressImage> CongressImages { get; set; }

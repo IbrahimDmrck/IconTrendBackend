@@ -17,6 +17,16 @@ namespace Business.Constants
         public static string AnnouncementListed="Duyuru Listelendi";
 
 
+        public static string AnnounceImageIsListed="Duyuru Görseli Listelendi";
+        public static string AnnounceImageLimitExceeded= "Daha Fazla Duyuru Görseli Yüklenemez";
+        public static string AnnounceImageIdNotExist="Duyuru Görseli Mevcut Değil";
+        public static string AnnounceImagesListed = "Duyuru Görselleri Listelendi";
+        public static string AnnounceImageIsAdded = "Duyuru Görseli Eklendi";
+        public static string AnnounceImageIsDeleted = "Duyuru Görseli Silindi";
+        public static string NoPictureOfTheAnnounce = "Duyuru Görseli Yok";
+        public static string AnnounceImageIsUpdate="Duyuru Görseli Güncellendi";
+
+
         public static string CongressAdded="Kongre oluşturuldu";
         public static string CongressDeleted="Kongre Silindi";
         public static string CongressUpdated="Kongre Güncellendi";
@@ -99,6 +109,8 @@ namespace Business.Constants
         public static string CongressPresidentIsUpdated="kongre başkanı güncellendi";
         public static string CongressPresidentsListed="Kongre başkanları listelendi";
         public static string CongressPresidentIsListed="Kongre başkanı listelendi";
+        public static string CongressPresidentNotExist = "Böyle bir kongre başkanı mevcut değil";
+        public static string CongressPresidentExist = "Kongre başkanı zaten mevcut";
 
         public static string TransportImageIsAdded="Ulaşım görseli eklendi";
         public static string TransportImageIsDeleted="Ulaşım görseli silindi";
@@ -109,5 +121,9 @@ namespace Business.Constants
         public static string TransportImageLimitExceeded="Daha fazla görsel yüklenemez";
         public static string TransportImageIsListed="Ulaşım görseli listelendi";
         public static string TransportIsListed="Ulaşımlar listelendi";
+
+        internal static string RegulatoryBoardMemberExist="Üye Zaten Mevcut";
+        internal static string RegulatoryBoardMemberNotExist="Böyle Bir Üye Mevcut Değil";
+
     }
 }

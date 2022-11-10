@@ -57,6 +57,27 @@ namespace Business.Concrete
             return new SuccessDataResult<RegulatoryBoard>(_regulatoryBoardDal.Get(x=>x.Id==id),Messages.RegulatoryBoardIsListed);
         }
 
-     
+        //Business Rules
+
+        private IResult CheckIfRegulatoryBoardMemberIdExist(int regulatoryBoardId)
+        {
+            var result = _regulatoryBoardDal.GetAll(x => x.Id == regulatoryBoardId).Any();
+            if (!result)
+            {
+                return new ErrorResult(Messages.RegulatoryBoardMemberNotExist);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfRegulatoryBoardMemberExist(string regulatoryBoardName)
+        {
+            var result = _regulatoryBoardDal.GetAll(x => Equals(x.RegulatoryBoardMemberName, regulatoryBoardName)).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.RegulatoryBoardMemberExist);
+            }
+            return new SuccessResult();
+        }
+
     }
 }

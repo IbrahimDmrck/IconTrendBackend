@@ -22,79 +22,31 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from congress in context.Congresses
                              join president in context.CongressPresidents
                                  on congress.CongressPresidentId equals president.Id
+                             join regulatory in context.RegulatoryBoards
+                                on congress.RegulatoryBoardId equals regulatory.Id
+                             join science in context.ScienceBoards
+                                on congress.ScienceBoardId equals science.Id
+                             join topic in context.Topics
+                                on congress.TopicId equals topic.Id
                              select new CongressDetailDto
                              {
                                  CongressId=congress.CongressId,
-                                 CongressName=congress.CongressName,
                                  CongressPresidentId=congress.CongressPresidentId,
+                                 RegulatoryBoardId=congress.RegulatoryBoardId,
+                                 ScienceBoardId=congress.ScienceBoardId,
+                                 TopicId=congress.TopicId,
+                                 CongressName=congress.CongressName,
+                                 CongressAbout = congress.CongressAbout,
+                                 CongressCity = congress.CongressCity,
+                                 CongressPlace = congress.CongressPlace,
+                                 CongressDate = congress.CongressDate,
+                                 CongressStatus = congress.CongressStatus,
                                  CogressPresidentName=president.CongressPresidentName,
-                                 CongressAbout=congress.CongressAbout,
-                                 CongressCity=congress.CongressCity,
-                                 CongressPlace=congress.CongressPlace,
-                                 CongressDate=congress.CongressDate,
-                                 CongressStatus=congress.CongressStatus,
-                  //               ScienceBoards = ((from s in context.ScienceBoards
-                  //                                 where
-                  // (congress.CongressId == s.CongressId)
-                  //                                 select new ScienceBoard
-                  //                                 {
-                  //                                     Id = s.Id,
-                  //                                     CongressId = s.CongressId,
-                  //                                     ScienceBoardMemberName = s.ScienceBoardMemberName,
-                  //                                     Univercity = s.Univercity
-                  //                                 }).ToList()).Count() == 0
-                  //                               ? new List<ScienceBoard> { new ScienceBoard { Id = -1, CongressId = -1, ScienceBoardMemberName = "", Univercity = "" } }
-                  //                               : (from s in context.ScienceBoards
-                  //                                  where
-                  //  (congress.CongressId == s.CongressId)
-                  //                                  select new ScienceBoard
-                  //                                  {
-                  //                                      Id = s.Id,
-                  //                                      CongressId = s.CongressId,
-                  //                                      ScienceBoardMemberName = s.ScienceBoardMemberName,
-                  //                                      Univercity = s.Univercity
-                  //                                  }).ToList(),
-                  //               RegulatoryBoards = ((from r in context.RegulatoryBoards
-                  //                                    where
-                  //(congress.CongressId == r.CongressId)
-                  //                                    select new RegulatoryBoard
-                  //                                    {
-                  //                                        Id = r.Id,
-                  //                                        CongressId = r.CongressId,
-                  //                                        RegulatoryBoardMemberName = r.RegulatoryBoardMemberName,
-                  //                                        Univercity = r.Univercity
-                  //                                    }).ToList()).Count == 0
-                  //                                  ? new List<RegulatoryBoard> { new RegulatoryBoard { Id = 1, CongressId = 1, RegulatoryBoardMemberName = "yok", Univercity = "yok" } }
-                  //                                  : (from r in context.RegulatoryBoards
-                  //                                     where
-                  //  (congress.CongressId == r.CongressId)
-                  //                                     select new RegulatoryBoard
-                  //                                     {
-                  //                                         Id = r.Id,
-                  //                                         CongressId = r.CongressId,
-                  //                                         RegulatoryBoardMemberName = r.RegulatoryBoardMemberName,
-                  //                                         Univercity = r.Univercity
-                  //                                     }).ToList(),
-                  //               Topics = ((from t in context.Topics
-                  //                          where
-                  //(congress.CongressId == t.CongressId)
-                  //                          select new Topic
-                  //                          {
-                  //                              Id = t.Id,
-                  //                              CongressId = t.CongressId,
-                  //                              Category = t.Category,
-                  //                              TopicName = t.TopicName
-                  //                          }).ToList()).Count == 0
-                  //                        ? new List<Topic> { new Topic { Id = 1, CongressId = 1, Category = "Yok", TopicName = "Yok" } }
-                  //                        : (from t in context.Topics
-                  //                           where (congress.CongressId == t.CongressId)
-                  //                           select new Topic
-                  //                           {
-                  //                               Id = t.Id,
-                  //                               CongressId = t.CongressId,
-                  //                               Category = t.Category,
-                  //                               TopicName = t.TopicName
-                  //                           }).ToList(),
+                                 RegulatoryBoardMemberName=regulatory.RegulatoryBoardMemberName,
+                                 ScienceBoardMemberName=science.ScienceBoardMemberName,
+                                 TopicName=topic.TopicName,
+                                 RegulatoryBoardMemberUnivercity=regulatory.Univercity,
+                                 ScienceBoardMemberUnivercity=science.Univercity,
                                  CongressImages = ((from ci in context.CongressImages
                                                     where (congress.CongressId == ci.CongressId)
                                                     select new CongressImage

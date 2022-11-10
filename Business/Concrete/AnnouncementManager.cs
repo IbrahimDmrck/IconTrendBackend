@@ -6,6 +6,7 @@ using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,21 +25,21 @@ namespace Business.Concrete
         }
 
        
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         public IResult Add(Announcement announcement)
         {
             _announcementDal.Add(announcement);
             return new SuccessResult(Messages.Announced);
         }
 
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         public IResult Delete(Announcement announcement)
         {
             _announcementDal.Delete(announcement);
             return new SuccessResult(Messages.AnnounceDeleted);
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         public IResult Update(Announcement announcement)
         {
             _announcementDal.Update(announcement);
@@ -57,6 +58,14 @@ namespace Business.Concrete
             return new SuccessDataResult<Announcement>(_announcementDal.Get(x => x.Id == id), Messages.AnnouncementListed);
         }
 
-       
+        public IDataResult<List<AnnouncementDetailDto>> GetAnnouncementsWithDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<AnnouncementDetailDto> GetAnnounceDetails(int announceId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,9 +19,14 @@ namespace Entities.DTOs
         public string CongressPlace { get; set; }
         public DateTime CongressDate { get; set; }
         public bool CongressStatus { get; set; }
-        public List<Topic> Topics { get; set; }
-        public List<RegulatoryBoard> RegulatoryBoards { get; set; }
-        public List<ScienceBoard> ScienceBoards { get; set; }
+        public int TopicId { get; set; }
+        public string TopicName { get; set; }
+        public int ScienceBoardId { get; set; }
+        public string ScienceBoardMemberName { get; set; }
+        public string ScienceBoardMemberUnivercity { get; set; }
+        public int RegulatoryBoardId { get; set; }
+        public string RegulatoryBoardMemberName { get; set; }
+        public string RegulatoryBoardMemberUnivercity { get; set; }
         public List<CongressImage> CongressImages { get; set; }
     }
 }
