@@ -45,7 +45,7 @@ namespace Business.Concrete
             TransportLayoverImage transportImage = new TransportLayoverImage
             {
                 ImagePath = imageResult.Message,
-                 TransportLayoverId = transportId,
+                TransportLayoverId = transportId,
                 Date = DateTime.Now
             };
 

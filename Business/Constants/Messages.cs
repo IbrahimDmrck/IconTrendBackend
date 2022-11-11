@@ -127,5 +127,10 @@ namespace Business.Constants
         internal static string AnnounceNotExist;
         internal static string AnnounceExist;
         internal static string CongressNotExist;
+        internal static string ScienceBoardMemberExist;
+        internal static string ScienceBoardMemberNotExist;
+        internal static string TopicNameExist;
+        internal static string TopicNotExist;
+        internal static string TransportLayoverNotExist;
     }
 }

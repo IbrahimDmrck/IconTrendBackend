@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -18,23 +21,48 @@ namespace Business.Concrete
     public class TransportLayoverManager : ITransportLayoverService
     {
         ITransportLayoverDal _transportLayoverDal;
+        ITransportLayoverImageService _transportLayoverImageService;
 
-        public TransportLayoverManager(ITransportLayoverDal transportLayoverDal)
+        public TransportLayoverManager(ITransportLayoverDal transportLayoverDal, ITransportLayoverImageService transportLayoverImageService)
         {
             _transportLayoverDal = transportLayoverDal;
+            _transportLayoverImageService = transportLayoverImageService;
+
         }
 
         [SecuredOperation("Admin")]
-        public IResult Add(TransportLayover transportLayover)
+        [ValidationAspect(typeof(TransportLayoverValidator))]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
+        public IDataResult<int> Add(TransportLayover transportLayover)
         {
+            
             _transportLayoverDal.Add(transportLayover);
-            return new SuccessResult(Messages.TransportLayoverIsAdded);
+            var result = _transportLayoverDal.Get(x =>
+            x.Description==transportLayover.Description &&
+            x.CongressId==transportLayover.CongressId &&
+            x.Capacity==transportLayover.Capacity &&
+            x.MinDemand==transportLayover.MinDemand &&
+            x.Price==transportLayover.Price 
+            );
+            if (result !=null)
+            {
+                return new SuccessDataResult<int>(result.TransportId, Messages.TransportLayoverIsAdded);
+            }
+            return new ErrorDataResult<int>(-1,"Ulaşım ve konaklama bilgisi eklenirken bir sorun oluştu");
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult Delete(TransportLayover transportLayover)
         {
-            _transportLayoverDal.Delete(transportLayover);
+            var rulesResult = BusinessRules.Run(CheckIfTransportLayoverIdExist(transportLayover.TransportId));
+            if (rulesResult!=null)
+            {
+                return rulesResult;
+            }
+            var deletedTransport = _transportLayoverDal.Get(x=>x.TransportId==transportLayover.TransportId);
+            _transportLayoverImageService.DeleteAllImagesOfTransportByTransportImageId(deletedTransport.TransportId);
+            _transportLayoverDal.Delete(deletedTransport);
             return new SuccessResult(Messages.TransportLayoverIsDeleted);
         }
 
@@ -58,10 +86,30 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(TransportLayoverValidator))]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult Update(TransportLayover transportLayover)
         {
+            var rulesResult = BusinessRules.Run(CheckIfTransportLayoverIdExist(transportLayover.TransportId));
+            if (rulesResult!=null)
+            {
+                return rulesResult;
+            }
             _transportLayoverDal.Update(transportLayover);
             return new SuccessResult(Messages.TransportLayoverIsUpdated);
+        }
+
+
+        //Business Rules
+
+        private IResult CheckIfTransportLayoverIdExist(int transportId)
+        {
+            var result = _transportLayoverDal.GetAll(x => x.TransportId == transportId).Any();
+            if (!result)
+            {
+                return new ErrorResult(Messages.TransportLayoverNotExist);
+            }
+            return new SuccessResult();
         }
     }
 }
