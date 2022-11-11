@@ -13,7 +13,7 @@ namespace Business.Abstract
     {
         IDataResult<Announcement> GetAnnouncementById(int id);
         IDataResult<List<Announcement>> GetAll();
-        IResult Add(Announcement announcement);
+        IDataResult<int> Add(Announcement announcement);
         IResult Update(Announcement announcement);
         IResult Delete(Announcement announcement);
         IDataResult<List<AnnouncementDetailDto>> GetAnnouncementsWithDetails();

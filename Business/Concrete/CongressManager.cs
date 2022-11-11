@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -18,24 +21,69 @@ namespace Business.Concrete
     public class CongressManager : ICongressService
     {
         ICongressDal _congressDal;
+        ICongressImageService _congressImageService;
 
-        public CongressManager(ICongressDal congressDal)
+        public CongressManager(ICongressDal congressDal, ICongressImageService congressImageService)
         {
             _congressDal = congressDal;
+            _congressImageService = congressImageService;
+            
         }
 
         [SecuredOperation("Admin")]
-        public IResult Add(Congress congress)
+        [ValidationAspect(typeof(CongressValidator))]
+        [CacheRemoveAspect("ICongressService.Get")]
+        public IDataResult<int> Add(Congress congress)
         {
+
              _congressDal.Add(congress);
-            return new SuccessResult(Messages.CongressAdded);
+            var result = _congressDal.Get(x =>
+              x.CongressName == congress.CongressName &&
+              x.CongressAbout == congress.CongressAbout  &&
+              x.CongressCity==congress.CongressCity &&
+              x.CongressPlace==congress.CongressPlace &&
+              x.CongressDate==congress.CongressDate &&
+              x.CongressPresidentId==congress.CongressPresidentId &&
+              x.CongressStatus==congress.CongressStatus &&
+              x.RegulatoryBoardId==congress.RegulatoryBoardId &&
+              x.ScienceBoardId==congress.ScienceBoardId &&
+              x.TopicId==congress.TopicId);
+            if (result !=null)
+            {
+                return new SuccessDataResult<int>(result.CongressId,Messages.CongressAdded);
+            }
+            return new ErrorDataResult<int>(-1,"Kongre eklenirken bir sorun oluştu");
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Delete(Congress congress)
         {
-            _congressDal.Delete(congress);
+            var rulesResult = BusinessRules.Run(CheckIfCongressIdExist(congress.CongressId));
+            if (rulesResult !=null)
+            {
+                return rulesResult;
+            }
+
+            var deletedCongress = _congressDal.Get(x => x.CongressId == congress.CongressId);
+            _congressImageService.DeleteAllImagesOfCongressByCongressId(deletedCongress.CongressId);
+            _congressDal.Delete(deletedCongress);
             return new SuccessResult(Messages.CongressDeleted);
+        }
+
+        [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(CongressValidator))]
+        [CacheRemoveAspect("ICongressService.Get")]
+        public IResult Update(Congress congress)
+        {
+            var rulesResult = BusinessRules.Run(CheckIfCongressIdExist(congress.CongressId));
+            if (rulesResult !=null)
+            {
+                return rulesResult;
+            }
+
+            _congressDal.Update(congress);
+            return new SuccessResult(Messages.CongressUpdated);
         }
 
         [CacheAspect(10)]
@@ -61,11 +109,18 @@ namespace Business.Concrete
             return new SuccessDataResult<CongressDetailDto>(_congressDal.GetCongressDetails(c => c.CongressId == congressId).SingleOrDefault(), Messages.CongressIsListed);
         }
 
-        [SecuredOperation("Admin")]
-        public IResult Update(Congress congress)
+    
+
+        //Business Rules
+
+        private IResult CheckIfCongressIdExist(int congressId)
         {
-            _congressDal.Update(congress);
-            return new SuccessResult(Messages.CongressUpdated);
+            var result = _congressDal.GetAll(x=>x.CongressId==congressId).Any();
+            if (!result)
+            {
+                return new ErrorResult(Messages.CongressNotExist);
+            }
+            return new SuccessResult();
         }
     }
 }

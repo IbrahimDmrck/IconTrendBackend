@@ -13,7 +13,7 @@ namespace Business.Abstract
     {
         IDataResult<Congress> GetCongressById(int id);
         IDataResult<List<Congress>> GetAll();
-        IResult Add(Congress congress);
+        IDataResult<int> Add(Congress congress);
         IResult Update(Congress congress);
         IResult Delete(Congress congress);
         IDataResult<List<CongressDetailDto>> GetCongressesWithDetails();

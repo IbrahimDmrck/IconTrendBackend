@@ -17,7 +17,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.CongressDate).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressName).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressPlace).NotEmpty().WithMessage("Bu alan boş geçilemez");
-            RuleFor(x => x.CongressStatus).NotEmpty().WithMessage("Bu alan boş geçilemez");
+           // RuleFor(x => x.CongressStatus).NotEmpty().WithMessage("Bu alan boş geçilemez");
             
         }
     }

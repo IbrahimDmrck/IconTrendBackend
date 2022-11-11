@@ -124,6 +124,8 @@ namespace Business.Constants
 
         internal static string RegulatoryBoardMemberExist="Üye Zaten Mevcut";
         internal static string RegulatoryBoardMemberNotExist="Böyle Bir Üye Mevcut Değil";
-
+        internal static string AnnounceNotExist;
+        internal static string AnnounceExist;
+        internal static string CongressNotExist;
     }
 }

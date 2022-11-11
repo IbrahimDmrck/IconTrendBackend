@@ -1,7 +1,10 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
 using DataAccess.Abstract;
@@ -24,23 +27,50 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(RegulatoryBoardValidator))]
+        [CacheRemoveAspect("IRegulatoryBoardService.Get")]
         public IResult Add(RegulatoryBoard regulatoryBoard)
         {
+            var rulesResult = BusinessRules.Run(CheckIfRegulatoryBoardMemberExist(regulatoryBoard.RegulatoryBoardMemberName));
+            if (rulesResult!=null)
+            {
+                return rulesResult;
+            }
+
             _regulatoryBoardDal.Add(regulatoryBoard);
             return new SuccessResult(Messages.RegulatoryBoardIsCreated);
 
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("IRegulatoryBoardService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Delete(RegulatoryBoard regulatoryBoard)
         {
-            _regulatoryBoardDal.Delete(regulatoryBoard);
+            var rulesResult = BusinessRules.Run(CheckIfRegulatoryBoardMemberIdExist(regulatoryBoard.Id));
+            if (rulesResult!=null)
+            {
+                return rulesResult;
+            }
+
+            var deletedRegulatoryBorad = _regulatoryBoardDal.Get(x => x.Id == regulatoryBoard.Id);
+            _regulatoryBoardDal.Delete(deletedRegulatoryBorad);
             return new SuccessResult(Messages.RegulatoryBoardIsDeleted);
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(RegulatoryBoardValidator))]
+        [CacheRemoveAspect("IRegulatoryBoardService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Update(RegulatoryBoard regulatoryBoard)
         {
+            var rulesResult = BusinessRules.Run(CheckIfRegulatoryBoardMemberIdExist(regulatoryBoard.Id));
+            if (rulesResult!=null)
+            {
+                return rulesResult;
+            }
+
+
             _regulatoryBoardDal.Update(regulatoryBoard);
             return new SuccessResult(Messages.RegulatoryBoardIsUpdated);
         }
