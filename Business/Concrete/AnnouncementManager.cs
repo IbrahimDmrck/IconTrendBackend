@@ -20,8 +20,8 @@ namespace Business.Concrete
 {
     public class AnnouncementManager : IAnnouncementService
     {
-        IAnnouncementDal _announcementDal;
-        IAnnounceImageService _announceImageService;
+        readonly IAnnouncementDal _announcementDal;
+        readonly IAnnounceImageService _announceImageService;
 
         public AnnouncementManager(IAnnouncementDal announcementDal, IAnnounceImageService announceImageService)
         {

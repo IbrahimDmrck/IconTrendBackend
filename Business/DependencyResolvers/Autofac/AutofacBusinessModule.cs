@@ -22,6 +22,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AnnouncementManager>().As<IAnnouncementService>().SingleInstance();
             builder.RegisterType<EfAnnouncementDal>().As<IAnnouncementDal>().SingleInstance();
 
+            builder.RegisterType<AnnounceImageManager>().As<IAnnounceImageService>().SingleInstance();
+            builder.RegisterType<EfAnnounceImageDal>().As<IAnnounceImageDal>().SingleInstance();
+
             builder.RegisterType<CongressImageManager>().As<ICongressImageService>().SingleInstance();
             builder.RegisterType<EfCongressImageDal>().As<ICongressImageDal>().SingleInstance();
 

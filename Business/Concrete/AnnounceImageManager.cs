@@ -17,7 +17,7 @@ namespace Business.Concrete
 {
     public class AnnounceImageManager:IAnnounceImageService
     {
-        IAnnounceImageDal _announceImageDal;
+        readonly IAnnounceImageDal _announceImageDal;
 
         public AnnounceImageManager(IAnnounceImageDal announceImageDal)
         {
@@ -38,7 +38,7 @@ namespace Business.Concrete
                 return new ErrorResult(imageResult.Message);
             }
 
-            AnnounceImage announceImage = new AnnounceImage
+            AnnounceImage announceImage = new()
             {
                 ImagePath = imageResult.Message,
                 AnnounceId = announceId,
@@ -150,7 +150,7 @@ namespace Business.Concrete
             bool result = _announceImageDal.GetAll(x=>x.AnnounceId==announceId).Any();
             if (!result)
             {
-                List<AnnounceImage> imageList = new List<AnnounceImage>
+                List<AnnounceImage> imageList = new()
                 {
                     new AnnounceImage
                     {

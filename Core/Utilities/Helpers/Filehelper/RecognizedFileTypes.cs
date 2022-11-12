@@ -8,7 +8,7 @@ namespace Core.Utilities.Helpers.Filehelper
 {
     public static class RecognizedFileTypes
     {
-        public static readonly Dictionary<string, string> Archives = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Archives = new()
         {
             { "bz2", "application/x-bzip2" },
             { "gz", "application/x-gz" },
@@ -18,7 +18,7 @@ namespace Core.Utilities.Helpers.Filehelper
             { "zip", "application/x-compressed" }
         };
 
-        public static readonly Dictionary<string, string> Audios = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Audios = new()
         {
             { "flac", "audio/x-flac" },
             { "m4a", "audio/mp4" },
@@ -29,7 +29,7 @@ namespace Core.Utilities.Helpers.Filehelper
             { "wav", "audio/wav" }
         };
 
-        public static readonly Dictionary<string, string> Documents = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Documents = new()
         {
             { "doc", "application/msword" },
             { "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
@@ -42,13 +42,13 @@ namespace Core.Utilities.Helpers.Filehelper
             { "xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
         };
 
-        public static readonly Dictionary<string, string> Executables = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Executables = new()
         {
             { "dll", "application/octet-stream" },
             { "exe", "application/octet-stream" }
         };
 
-        public static readonly Dictionary<string, string> Images = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Images = new()
         {
             //{ "bmp", "image/bmp" },
             //{ "gif", "image/gif" },
@@ -60,12 +60,12 @@ namespace Core.Utilities.Helpers.Filehelper
             //{ "tiff", "image/tiff" }
         };
 
-        public static readonly Dictionary<string, string> Texts = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Texts = new()
         {
             { "txt", "text/plain" }
         };
 
-        public static readonly Dictionary<string, string> Videos = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Videos = new()
         {
             { "flv", "application/unknown" },
             { "mov", "video/quicktime" },
@@ -73,7 +73,7 @@ namespace Core.Utilities.Helpers.Filehelper
             { "3gp", "video/3gp" }
         };
 
-        public static readonly Dictionary<string, string> Xmls = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> Xmls = new()
         {
             { "xml", "application/xml" }
         };

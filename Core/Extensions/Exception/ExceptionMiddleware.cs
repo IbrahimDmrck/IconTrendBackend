@@ -12,7 +12,7 @@ namespace Core.Extensions.Exception
 {
     public class ExceptionMiddleware
     {
-        private RequestDelegate _next;
+        private readonly RequestDelegate _next;
 
         public ExceptionMiddleware(RequestDelegate next)
         {
@@ -31,7 +31,7 @@ namespace Core.Extensions.Exception
             }
         }
 
-        private Task HandleExceptionAsync(HttpContext httpContext, System.Exception e)
+        private static Task HandleExceptionAsync(HttpContext httpContext, System.Exception e)
         {
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

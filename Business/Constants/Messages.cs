@@ -15,6 +15,8 @@ namespace Business.Constants
         public static string AnnounceUpdated="Duyuru Güncellendi";
         public static string AnnouncesListed="duyurular listelendi";
         public static string AnnouncementListed="Duyuru Listelendi";
+        public static string AnnounceNotExist = "Duyuru Mevcut değil";
+        public static string AnnounceExist = "Böyle bir duyuru zaten var";
 
 
         public static string AnnounceImageIsListed="Duyuru Görseli Listelendi";
@@ -32,6 +34,7 @@ namespace Business.Constants
         public static string CongressUpdated="Kongre Güncellendi";
         public static string CongressesListed="Kongreler Listelendi";
         public static string CongressIsListed="Kongre Listelendi";
+        public static string CongressNotExist = "Böyle bir kongre mevcut değil";
 
 
         public static string PaperIsAdded="Makale eklendi";
@@ -46,6 +49,8 @@ namespace Business.Constants
         public static string TopicIsUpdated="Başlık Güncellendi";
         public static string TopicIsListed="Başlık Listelendi";
         public static string TopicsListed="Başlıklar Listelendi";
+        public static string TopicNameExist = "Böyle bir konu zaten mevcut";
+        public static string TopicNotExist = "Konu mevcut değil";
 
 
         public static string TransportLayoverIsAdded="Ulaşım ve konaklama bilgisi eklendi";
@@ -53,6 +58,8 @@ namespace Business.Constants
         public static string TransportLayoverIsUpdated="Ulaşım ve konaklama bilgisi güncellendi";
         public static string TransportLayoversListed="Ulaşım ve konaklama bilgileri listelendi";
         public static string TransportLayoverIsListed="Ulaşım ve konaklama bilgisi listelendi";
+        public static string TransportLayoverNotExist = "Ulaşım ve konaklama bilgisi mevcut değil";
+        public static string TransportIsListed = "Ulaşımlar listelendi";
 
 
         public static string CongressImagesListed="Kongre görselleri listelendi";
@@ -95,6 +102,8 @@ namespace Business.Constants
         public static string ScienceBoardsListed="Bilim kurulları listelendi";
         public static string ScienceBoardIsListed = "Bilim kurulu listelendi";
         public static string ScienceBoardISUpdated="Bilim kurlu güncellendi";
+        public static string ScienceBoardMemberExist = "Bilim kurulu zaten mevcut";
+        public static string ScienceBoardMemberNotExist = "Böyle bir bilim kurulu mevcut değil";
 
 
         public static string RegulatoryBoardIsCreated="Düzenleme kurulu oluşturuldu";
@@ -102,6 +111,8 @@ namespace Business.Constants
         public static string RegulatoryBoardIsUpdated="Düzenleme kurulu güncellendi";
         public static string RegulatoryBoardsListed="Düzenleme kurulları listelendi";
         public static string RegulatoryBoardIsListed="Düzenleme kurulu listelendi";
+        public static string RegulatoryBoardMemberExist = "Üye Zaten Mevcut";
+        public static string RegulatoryBoardMemberNotExist = "Böyle Bir Üye Mevcut Değil";
 
 
         public static string CongressPresidentIsAdded="Kongre başkanı eklendi";
@@ -120,17 +131,14 @@ namespace Business.Constants
         public static string TransportImageIdNotExist="Ulaşım görseli mevcut değil";
         public static string TransportImageLimitExceeded="Daha fazla görsel yüklenemez";
         public static string TransportImageIsListed="Ulaşım görseli listelendi";
-        public static string TransportIsListed="Ulaşımlar listelendi";
+ 
 
-        internal static string RegulatoryBoardMemberExist="Üye Zaten Mevcut";
-        internal static string RegulatoryBoardMemberNotExist="Böyle Bir Üye Mevcut Değil";
-        internal static string AnnounceNotExist;
-        internal static string AnnounceExist;
-        internal static string CongressNotExist;
-        internal static string ScienceBoardMemberExist;
-        internal static string ScienceBoardMemberNotExist;
-        internal static string TopicNameExist;
-        internal static string TopicNotExist;
-        internal static string TransportLayoverNotExist;
+
+
+     
+
+      
+
+
     }
 }

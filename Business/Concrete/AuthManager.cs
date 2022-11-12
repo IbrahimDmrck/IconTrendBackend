@@ -17,8 +17,8 @@ namespace Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IUserService _userService;
-        private ITokenHelper _tokenHelper;
+        private readonly IUserService _userService;
+        private readonly ITokenHelper _tokenHelper;
 
         public AuthManager(IUserService userService, ITokenHelper tokenHelper)
         {
@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         public IResult ChangePassword(ChangePasswordModel updatedUser)
         {
-            UserForLoginDto checkedUser = new UserForLoginDto
+            UserForLoginDto checkedUser = new()
             {
                 Email = updatedUser.Email,
                 Password = updatedUser.OldPassword
@@ -82,7 +82,7 @@ namespace Business.Concrete
                 LastName=userForRegisterDto.LastName,
                 PasswordHash=passwordHash,
                 PasswordSalt=passwordSalt,
-                status=true
+                Status=true
 
             };
             _userService.Add(user);

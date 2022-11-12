@@ -27,7 +27,7 @@ namespace Core.Utilities.Helpers.Filehelper
 
         public static IResult Upload(IFormFile file)
         {
-            var requestShield = Shield(file);   //Shield method returns the ExtensionInformation object.
+            var requestShield = Shield(file);   
             if (!requestShield.Success)
             {
                 return new ErrorResult(requestShield.Message);
@@ -179,7 +179,7 @@ namespace Core.Utilities.Helpers.Filehelper
 
             byte[] content;
 
-            using (FileStream fileStream = new FileStream(Path.GetTempFileName(), FileMode.Open, FileAccess.Write, FileShare.Read, 1024, FileOptions.None))
+            using (FileStream fileStream = new(Path.GetTempFileName(), FileMode.Open, FileAccess.Write, FileShare.Read, 1024, FileOptions.None))
             {
                 file.CopyTo(fileStream);
                 var tempFilePath = fileStream.Name;
@@ -209,7 +209,7 @@ namespace Core.Utilities.Helpers.Filehelper
                 {
                     if (($".{acceptedExtensionMimeType.Key}") == extension)
                     {
-                        ExtensionInformation extensionInformation = new ExtensionInformation
+                        ExtensionInformation extensionInformation = new()
                         {
                             Extension = acceptedExtensionMimeType.Key,
                             MimeType = acceptedExtensionMimeType.Value,

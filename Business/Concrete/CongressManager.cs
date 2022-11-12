@@ -20,8 +20,8 @@ namespace Business.Concrete
 {
     public class CongressManager : ICongressService
     {
-        ICongressDal _congressDal;
-        ICongressImageService _congressImageService;
+        readonly ICongressDal _congressDal;
+        readonly ICongressImageService _congressImageService;
 
         public CongressManager(ICongressDal congressDal, ICongressImageService congressImageService)
         {

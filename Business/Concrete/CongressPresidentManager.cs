@@ -19,14 +19,14 @@ namespace Business.Concrete
 {
     public class CongressPresidentManager : ICongressPresidentService
     {
-        ICongressPresidentDal _congressPresidentDal;
+        readonly ICongressPresidentDal _congressPresidentDal;
 
         public CongressPresidentManager(ICongressPresidentDal congressPresidentDal)
         {
             _congressPresidentDal = congressPresidentDal;
         }
 
-        [SecuredOperation("Admin")]
+       // [SecuredOperation("Admin")]
         [ValidationAspect(typeof(CongressPresidentValidator))]
         [CacheRemoveAspect("ICongressPresidentService.Get")]
         public IResult Add(CongressPresident congressPresident)

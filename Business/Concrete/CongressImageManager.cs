@@ -18,7 +18,7 @@ namespace Business.Abstract
 {
     public class CongressImageManager : ICongressImageService
     {
-        ICongressImageDal _congressImageDal;
+        readonly ICongressImageDal _congressImageDal;
 
         public CongressImageManager(ICongressImageDal congressImageDal)
         {
@@ -40,7 +40,7 @@ namespace Business.Abstract
                 return new ErrorResult(imageResult.Message);
             }
 
-            CongressImage congressImage = new CongressImage
+            CongressImage congressImage = new()
             {
                 ImagePath=imageResult.Message,
                 CongressId=congressId,
@@ -162,7 +162,7 @@ namespace Business.Abstract
             bool result = _congressImageDal.GetAll(c => c.CongressId == congressId).Any();
             if (!result)
             {
-                List<CongressImage> imageList = new List<CongressImage>
+                List<CongressImage> imageList = new()
                 {
                     new CongressImage
                     {
