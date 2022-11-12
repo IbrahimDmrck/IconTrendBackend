@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Result.Abstract;
 using Core.Utilities.Result.Concrete;
@@ -26,6 +28,7 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
+        [ValidationAspect(typeof(ChangePasswordValidator))]
         public IResult ChangePassword(ChangePasswordModel updatedUser)
         {
             UserForLoginDto checkedUser = new()
@@ -55,6 +58,7 @@ namespace Business.Concrete
             return new SuccessDataResult<AccessToken>(accessToken,Messages.AccessTokenIsCreated);
         }
 
+        [ValidationAspect(typeof(UserForLoginDtoValidator))]
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetUserByMail(userForLoginDto.Email);
@@ -71,6 +75,7 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(userToCheck.Data,Messages.LoginIsSuccessful);
         }
 
+        [ValidationAspect(typeof(UserForRegisterDtoValidator))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;

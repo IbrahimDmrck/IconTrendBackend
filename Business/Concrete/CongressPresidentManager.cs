@@ -26,7 +26,7 @@ namespace Business.Concrete
             _congressPresidentDal = congressPresidentDal;
         }
 
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin")]
         [ValidationAspect(typeof(CongressPresidentValidator))]
         [CacheRemoveAspect("ICongressPresidentService.Get")]
         public IResult Add(CongressPresident congressPresident)

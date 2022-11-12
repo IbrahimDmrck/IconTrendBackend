@@ -92,6 +92,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Congress>>(_congressDal.GetAll(), Messages.CongressesListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<CongressDetailDto>> GetCongressesWithDetails()
         {
             return new SuccessDataResult<List<CongressDetailDto>>(_congressDal.GetCongressDetails(), Messages.CongressesListed);

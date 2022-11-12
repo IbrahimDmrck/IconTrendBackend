@@ -54,7 +54,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(TransportLayover transportLayover)
         {
@@ -66,7 +65,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost("delete")]
         public IActionResult Delete(TransportLayover transportLayover)
         {
@@ -78,7 +76,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update(TransportLayover transportLayover)
         {

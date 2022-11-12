@@ -53,7 +53,6 @@ namespace Business.Concrete
 
         [SecuredOperation("Admin")]
         [CacheRemoveAspect("IAnnounceService.Get")]
-        [CacheRemoveAspect("IAnnounceImageService.Get")]
         public IResult Delete(Announcement announcement)
         {
             var rulesResult = BusinessRules.Run(CheckIfAnnounceIdExist(announcement.Id));
@@ -71,7 +70,6 @@ namespace Business.Concrete
         [SecuredOperation("Admin")]
         [ValidationAspect(typeof(AnnounceValidator))]
         [CacheRemoveAspect("IAnnounceService.Get")]
-        [CacheRemoveAspect("IAnnounceImageService.Get")]
         public IResult Update(Announcement announcement)
         {
             var rulesResult = BusinessRules.Run(CheckIfAnnounceIdExist(announcement.Id),CheckIfAnnounceTitle(announcement.AnnounceTitle));
@@ -96,11 +94,13 @@ namespace Business.Concrete
             return new SuccessDataResult<Announcement>(_announcementDal.Get(x => x.Id == id), Messages.AnnouncementListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<AnnouncementDetailDto>> GetAnnouncementsWithDetails()
         {
             return new SuccessDataResult<List<AnnouncementDetailDto>>(_announcementDal.GetAnnouncementDetails(), Messages.AnnouncesListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<AnnouncementDetailDto> GetAnnounceDetails(int announceId)
         {
             return new SuccessDataResult<AnnouncementDetailDto>(_announcementDal.GetAnnouncementDetails(x => x.Id == announceId).SingleOrDefault(), Messages.AnnouncementListed);

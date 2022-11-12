@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -27,6 +29,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(TransportLayoverImageValidator))]
+        [CacheRemoveAspect("ITransportLayoverImageService.Get")]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult Add(IFormFile file, int transportId)
         {
 
@@ -54,6 +59,8 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ITransportLayoverImageService.Get")]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult Delete(TransportLayoverImage transport)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfTransportImageIdExist(transport.Id));
@@ -73,6 +80,8 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ITransportLayoverImageService.Get")]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult DeleteAllImagesOfTransportByTransportImageId(int tranportId)
         {
             var deletedImages = _transportLayoverImageDal.GetAll(x => x.TransportLayoverId == tranportId);
@@ -89,21 +98,21 @@ namespace Business.Concrete
             return new SuccessResult(Messages.TransportImageIsDeleted);
         }
 
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<TransportLayoverImage>> GetAll()
         {
             return new SuccessDataResult<List<TransportLayoverImage>>(_transportLayoverImageDal.GetAll(), Messages.TransportImagesListed);
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<TransportLayoverImage> GetById(int transortImageId)
         {
             return new SuccessDataResult<TransportLayoverImage>(_transportLayoverImageDal.Get(x => x.Id == transortImageId), Messages.TransportImageIsListed);
         }
 
-       // [SecuredOperation("Admin")]
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<TransportLayoverImage>> GetTransportImage(int transportId)
         {
@@ -115,6 +124,9 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(TransportLayoverImageValidator))]
+        [CacheRemoveAspect("ITransportLayoverImageService.Get")]
+        [CacheRemoveAspect("ITransportLayoverService.Get")]
         public IResult Update(TransportLayoverImage transportImage, IFormFile file)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfTransportImageIdExist(transportImage.Id), CheckIfTransportImageLimitExceeded(transportImage.TransportLayoverId));

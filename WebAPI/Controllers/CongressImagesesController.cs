@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       
         [HttpPost("add")]
         public IActionResult Add([FromForm] int congressId,[FromForm] IFormFile congressImage)
         {
@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       
         [HttpPost("delete")]
         public IActionResult Delete(CongressImage congressImage)
         {
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update([FromForm] CongressImage congressImage, [FromForm] IFormFile imageFile)
         {

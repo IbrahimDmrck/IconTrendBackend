@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+      
         [HttpPost("add")]
         public IActionResult Add([FromForm] int transportId, [FromForm] IFormFile transportImage)
         {
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update([FromForm] TransportLayoverImage transportLayoverImage, [FromForm] IFormFile imageFile)
         {

@@ -78,7 +78,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+      
         [HttpPost("delete")]
         public IActionResult Delete(Congress congress)
         {
@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+      //  [Authorize(Roles = "Admin")]
         [HttpPost("update")]
         public IActionResult Update(Congress congress)
         {

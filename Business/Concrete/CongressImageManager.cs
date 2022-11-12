@@ -1,6 +1,8 @@
 ﻿using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -26,6 +28,9 @@ namespace Business.Abstract
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(CongressImageValidator))]
+        [CacheRemoveAspect("ICongressImageService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Add(IFormFile file, int congressId)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageLimitExceeded(congressId));
@@ -52,6 +57,8 @@ namespace Business.Abstract
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ICongressImageService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Delete(CongressImage congress)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congress.Id));
@@ -71,6 +78,8 @@ namespace Business.Abstract
         }
 
         [SecuredOperation("Admin")]
+        [CacheRemoveAspect("ICongressImageService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult DeleteAllImagesOfCongressByCongressId(int congressId)
         {
             var deletedImages = _congressImageDal.GetAll(x=>x.CongressId==congressId);
@@ -87,20 +96,21 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetAll()
         {
             return new SuccessDataResult<List<CongressImage>>(_congressImageDal.GetAll(), Messages.CongressImagesListed);
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<CongressImage> GetById(int congressImageId)
         {
             return new SuccessDataResult<CongressImage>(_congressImageDal.Get(x=>x.Id==congressImageId),Messages.CongressImageIsListed);
         }
 
-        //[SecuredOperation("Admin")]
+        [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetCongressImage(int congressId)
         {
@@ -112,6 +122,9 @@ namespace Business.Abstract
         }
 
         [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(CongressImageValidator))]
+        [CacheRemoveAspect("ICongressImageService.Get")]
+        [CacheRemoveAspect("ICongressService.Get")]
         public IResult Update(CongressImage congressImage, IFormFile file)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfCongressImageIdExist(congressImage.Id), CheckIfCongressImageLimitExceeded(congressImage.CongressId));

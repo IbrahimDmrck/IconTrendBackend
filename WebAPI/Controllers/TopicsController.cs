@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+      
         [HttpPost("add")]
         public IActionResult Add(Topic topic)
         {
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+  
         [HttpPost("update")]
         public IActionResult Update(Topic topic)
         {
@@ -68,7 +68,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost("delete")]
         public IActionResult Delete(Topic topic)
         {

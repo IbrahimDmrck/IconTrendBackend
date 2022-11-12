@@ -1,5 +1,9 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.Filehelper;
 using Core.Utilities.Result.Abstract;
@@ -24,6 +28,10 @@ namespace Business.Concrete
             _announceImageDal = announceImageDal;
         }
 
+        [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(AnnounceImageValidator))]
+        [CacheRemoveAspect("IAnnounceImageService.Get")]
+        [CacheRemoveAspect("IAnnounceService.Get")]
         public IResult Add(IFormFile file, int announceId)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfAnnounceImageLimitExceeded(announceId));
@@ -49,6 +57,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AnnounceImageIsAdded);
         }
 
+        [SecuredOperation("Admin")]
+        [CacheRemoveAspect("IAnnounceImageService.Get")]
+        [CacheRemoveAspect("IAnnounceService.Get")]
         public IResult Delete(AnnounceImage announceImage)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfAnnounceImageIdExist(announceImage.Id));
@@ -68,6 +79,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AnnounceImageIsDeleted);
         }
 
+        [SecuredOperation("Admin")]
+        [CacheRemoveAspect("IAnnounceImageService.Get")]
+        [CacheRemoveAspect("IAnnounceService.Get")]
         public IResult DeleteAllImagesOfAnnounceByAnnounceId(int announceId)
         {
             var deletedImages = _announceImageDal.GetAll(x => x.AnnounceId == announceId);
@@ -83,11 +97,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AnnounceImageIsDeleted);
         }
 
+        [SecuredOperation("Admin,User")]
+        [CacheAspect(10)]
         public IDataResult<List<AnnounceImage>> GetAll()
         {
             return new SuccessDataResult<List<AnnounceImage>>(_announceImageDal.GetAll(),Messages.AnnounceImagesListed);
         }
 
+        [SecuredOperation("Admin,User")]
+        [CacheAspect(10)]
         public IDataResult<List<AnnounceImage>> GetAnnounceImage(int announceId)
         {
             var checkIfAnnounceImage = CheckIfAnnounceHasImage(announceId);
@@ -97,11 +115,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<AnnounceImage>>(images, checkIfAnnounceImage.Message);
         }
 
+        [SecuredOperation("Admin,User")]
+        [CacheAspect(10)]
         public IDataResult<AnnounceImage> GetById(int announceImageId)
         {
             return new SuccessDataResult<AnnounceImage>(_announceImageDal.Get(x=>x.Id==announceImageId),Messages.AnnounceImageIsListed);
         }
 
+        [SecuredOperation("Admin")]
+        [ValidationAspect(typeof(AnnounceImageValidator))]
+        [CacheRemoveAspect("IAnnounceImageService.Get")]
+        [CacheRemoveAspect("IAnnounceService.Get")]
         public IResult Update(AnnounceImage announceImage, IFormFile file)
         {
             IResult rulesResult = BusinessRules.Run(CheckIfAnnounceImageIdExist(announceImage.Id), CheckIfAnnounceImageLimitExceeded(announceImage.AnnounceId));

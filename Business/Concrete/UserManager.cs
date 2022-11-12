@@ -50,7 +50,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserIsDeleted);
         }
 
-        //[CacheAspect(10)]
+     
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.UsersListed);

@@ -22,7 +22,6 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-       // [Authorize(Roles = "Admin")]
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -34,7 +33,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "admin")]
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
@@ -46,7 +44,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
@@ -58,7 +55,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin,User")]
         [HttpPost("delete")]
         public IActionResult Delete([FromForm] int id)
         {
@@ -70,7 +66,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin,User")]
         [HttpPost("update")]
         public IActionResult Update(UserDto user)
         {

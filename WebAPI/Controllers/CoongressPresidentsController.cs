@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin")]
+      
         [HttpPost("delete")]
         public IActionResult Delete(CongressPresident congressPresident)
         {
