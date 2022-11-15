@@ -13,7 +13,7 @@ namespace Entities.DTOs
         public int CongressId { get; set; }
         public string CongressName { get; set; }
         public int CongressPresidentId { get; set; }
-        public string CogressPresidentName { get; set; }
+        public string CongressPresidentName { get; set; }
         public string CongressAbout { get; set; }
         public string CongressCity { get; set; }
         public string CongressPlace { get; set; }

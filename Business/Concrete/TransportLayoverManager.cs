@@ -39,7 +39,6 @@ namespace Business.Concrete
             _transportLayoverDal.Add(transportLayover);
             var result = _transportLayoverDal.Get(x =>
             x.Description==transportLayover.Description &&
-            x.CongressId==transportLayover.CongressId &&
             x.Capacity==transportLayover.Capacity &&
             x.MinDemand==transportLayover.MinDemand &&
             x.Price==transportLayover.Price 

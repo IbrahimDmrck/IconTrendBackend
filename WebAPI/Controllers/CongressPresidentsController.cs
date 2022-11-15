@@ -12,11 +12,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoongressPresidentsController : ControllerBase
+    public class CongressPresidentsController : ControllerBase
     {
         private readonly ICongressPresidentService _congressPresidentService;
 
-        public CoongressPresidentsController(ICongressPresidentService congressPresidentService)
+        public CongressPresidentsController(ICongressPresidentService congressPresidentService)
         {
             _congressPresidentService = congressPresidentService;
         }

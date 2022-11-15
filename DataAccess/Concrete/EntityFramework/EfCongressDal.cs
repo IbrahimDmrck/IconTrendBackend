@@ -41,7 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CongressPlace = congress.CongressPlace,
                                  CongressDate = congress.CongressDate,
                                  CongressStatus = congress.CongressStatus,
-                                 CogressPresidentName=president.CongressPresidentName,
+                                 CongressPresidentName=president.CongressPresidentName,
                                  RegulatoryBoardMemberName=regulatory.RegulatoryBoardMemberName,
                                  ScienceBoardMemberName=science.ScienceBoardMemberName,
                                  TopicName=topic.TopicName,
