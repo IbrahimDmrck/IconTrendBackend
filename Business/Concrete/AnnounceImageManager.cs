@@ -97,14 +97,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AnnounceImageIsDeleted);
         }
 
-        [SecuredOperation("Admin,User")]
+        //[SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<AnnounceImage>> GetAll()
         {
             return new SuccessDataResult<List<AnnounceImage>>(_announceImageDal.GetAll(),Messages.AnnounceImagesListed);
         }
 
-        [SecuredOperation("Admin,User")]
+       // [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<List<AnnounceImage>> GetAnnounceImage(int announceId)
         {
@@ -115,7 +115,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<AnnounceImage>>(images, checkIfAnnounceImage.Message);
         }
 
-        [SecuredOperation("Admin,User")]
+       // [SecuredOperation("Admin,User")]
         [CacheAspect(10)]
         public IDataResult<AnnounceImage> GetById(int announceImageId)
         {
@@ -158,15 +158,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult CheckIfAnnounceImageIdExist(int imageId)
-        {
-            var result = _announceImageDal.GetAll(x=>x.Id==imageId).Any();
-            if (!result)
-            {
-                return new ErrorResult(Messages.AnnounceImageIdNotExist);
-            }
-            return new SuccessResult();
-        }
 
         private IDataResult<List<AnnounceImage>> CheckIfAnnounceHasImage(int announceId)
         {
@@ -186,6 +177,16 @@ namespace Business.Concrete
                 return new SuccessDataResult<List<AnnounceImage>>(imageList,Messages.GetDefaultImage);
             }
             return new ErrorDataResult<List<AnnounceImage>>(new List<AnnounceImage>(), Messages.AnnounceImagesListed);
+        }
+
+        private IResult CheckIfAnnounceImageIdExist(int imageId)
+        {
+            var result = _announceImageDal.GetAll(x=>x.Id==imageId).Any();
+            if (!result)
+            {
+                return new ErrorResult(Messages.AnnounceImageIdNotExist);
+            }
+            return new SuccessResult();
         }
     }
 }

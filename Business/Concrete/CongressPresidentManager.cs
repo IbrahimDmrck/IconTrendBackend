@@ -31,7 +31,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICongressPresidentService.Get")]
         public IResult Add(CongressPresident congressPresident)
         {
-            var rulesResult = BusinessRules.Run(CheckIfCongressPresidentNameExist(congressPresident.CongressPresidentName));
+            var rulesResult = BusinessRules.Run(CheckIfCongressPresidentNameExist(congressPresident.CongressPresidentName), CheckIfCongressIdExist(congressPresident.CongressId));
             if (rulesResult!=null)
             {
                 return rulesResult;
@@ -93,6 +93,16 @@ namespace Business.Concrete
             if (!result)
             {
                 return new ErrorResult(Messages.CongressPresidentNotExist);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCongressIdExist(int congressId)
+        {
+            var result = _congressPresidentDal.GetAll(x => x.CongressId == congressId).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CongressAlreadyHavePresident);
             }
             return new SuccessResult();
         }

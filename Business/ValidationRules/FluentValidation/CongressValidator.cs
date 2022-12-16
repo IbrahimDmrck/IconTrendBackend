@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class CongressValidator:AbstractValidator<Congress>
+    public class CongressValidator : AbstractValidator<Congress>
     {
         public CongressValidator()
         {
@@ -17,8 +17,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.CongressDate).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressName).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressPlace).NotEmpty().WithMessage("Bu alan boş geçilemez");
-           // RuleFor(x => x.CongressStatus).NotEmpty().WithMessage("Bu alan boş geçilemez");
-            
+            RuleFor(x => x.CongressStatus).NotEmpty().WithMessage("Bu alan boş geçilemez");
+
         }
     }
 }

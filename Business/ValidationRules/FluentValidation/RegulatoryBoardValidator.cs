@@ -12,8 +12,9 @@ namespace Business.ValidationRules.FluentValidation
     {
         public RegulatoryBoardValidator()
         {
-            //RuleFor(x => x.RegulatoryBoardMemberName).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
-            //RuleFor(x => x.CongressId).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+            RuleFor(x => x.RegulatoryBoardMemberName).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+            RuleFor(x => x.CongressId).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+            RuleFor(x => x.Univercity).NotEmpty().WithMessage("Bu Alanı boş geçmeyin");
         }
     }
 }

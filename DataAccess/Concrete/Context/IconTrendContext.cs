@@ -37,6 +37,7 @@ namespace DataAccess.Concrete.Context
         public virtual DbSet<CongressPresident> CongressPresidents { get; set; }
         public virtual DbSet<RegulatoryBoard> RegulatoryBoards { get; set; }
         public virtual DbSet<ScienceBoard> ScienceBoards { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
     }
 }

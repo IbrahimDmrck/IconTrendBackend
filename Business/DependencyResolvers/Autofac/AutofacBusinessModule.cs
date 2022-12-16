@@ -49,6 +49,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<TransportlayoverImageManager>().As<ITransportLayoverImageService>().SingleInstance();
             builder.RegisterType<EfTransportLayoverImageDal>().As<ITransportLayoverImageDal>().SingleInstance();
 
+            builder.RegisterType<ContactManager>().As<IContactService>().SingleInstance();
+            builder.RegisterType<EfContactDal>().As<IContactDal>().SingleInstance();
+
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 

@@ -96,21 +96,21 @@ namespace Business.Abstract
             return new SuccessResult(Messages.CongressImageIsDeleted);
         }
 
-        [SecuredOperation("Admin,User")]
+       
         [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetAll()
         {
             return new SuccessDataResult<List<CongressImage>>(_congressImageDal.GetAll(), Messages.CongressImagesListed);
         }
 
-        [SecuredOperation("Admin,User")]
+        
         [CacheAspect(10)]
         public IDataResult<CongressImage> GetById(int congressImageId)
         {
             return new SuccessDataResult<CongressImage>(_congressImageDal.Get(x=>x.Id==congressImageId),Messages.CongressImageIsListed);
         }
 
-        [SecuredOperation("Admin,User")]
+       
         [CacheAspect(10)]
         public IDataResult<List<CongressImage>> GetCongressImage(int congressId)
         {

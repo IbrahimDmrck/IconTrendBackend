@@ -55,7 +55,8 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       
+    
+
         [HttpPost("delete")]
         public IActionResult Delete(CongressImage congressImage)
         {
@@ -67,7 +68,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin")]
+     
         [HttpPost("update")]
         public IActionResult Update([FromForm] CongressImage congressImage, [FromForm] IFormFile imageFile)
         {

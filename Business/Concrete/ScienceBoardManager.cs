@@ -31,7 +31,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IScienceBoardService.Get")]
         public IResult Add(ScienceBoard scienceBoard)
         {
-            var rulesResult = BusinessRules.Run(CheckIfScienceBoardMemberExist(scienceBoard.ScienceBoardMemberName));
+            var rulesResult = BusinessRules.Run(CheckIfScienceBoardMemberExist(scienceBoard.ScienceBoardMemberName), CheckIfCongressIdExist(scienceBoard.CongressId));
             if (rulesResult!=null)
             {
                 return rulesResult;
@@ -91,6 +91,16 @@ namespace Business.Concrete
             if (!result)
             {
                 return new ErrorResult(Messages.ScienceBoardMemberNotExist);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCongressIdExist(int congressId)
+        {
+            var result = _scienceBoardDal.GetAll(x => x.CongressId == congressId).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CongressAlreadyHaveScienceBoard);
             }
             return new SuccessResult();
         }

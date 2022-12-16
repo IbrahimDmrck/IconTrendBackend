@@ -12,10 +12,10 @@ namespace Business.ValidationRules.FluentValidation
     {
         public TopicValidator()
         {
-            //RuleFor(x => x.Category).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
-            //RuleFor(x => x.CongressId).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
-            //RuleFor(x => x.TopicName).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
-           
+            RuleFor(x => x.Category).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+            RuleFor(x => x.CongressId).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+            RuleFor(x => x.TopicName).NotEmpty().WithMessage("Bu alanı boş geçemezsin");
+
         }
     }
 }

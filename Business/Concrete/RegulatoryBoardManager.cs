@@ -31,7 +31,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IRegulatoryBoardService.Get")]
         public IResult Add(RegulatoryBoard regulatoryBoard)
         {
-            var rulesResult = BusinessRules.Run(CheckIfRegulatoryBoardMemberExist(regulatoryBoard.RegulatoryBoardMemberName));
+            var rulesResult = BusinessRules.Run(CheckIfRegulatoryBoardMemberExist(regulatoryBoard.RegulatoryBoardMemberName), CheckIfCongressIdExist(regulatoryBoard.CongressId));
             if (rulesResult!=null)
             {
                 return rulesResult;
@@ -95,6 +95,16 @@ namespace Business.Concrete
             if (!result)
             {
                 return new ErrorResult(Messages.RegulatoryBoardMemberNotExist);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCongressIdExist(int congressId)
+        {
+            var result = _regulatoryBoardDal.GetAll(x => x.CongressId == congressId).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CongressAlreadyHaveRegulatoryBoard);
             }
             return new SuccessResult();
         }

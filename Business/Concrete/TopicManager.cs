@@ -31,7 +31,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("ITopicService.Get")]
         public IResult Add(Topic topic)
         {
-            var rulesResult = BusinessRules.Run(CheckIfTopicExist(topic.TopicName));
+            var rulesResult = BusinessRules.Run(CheckIfTopicExist(topic.TopicName), CheckIfCongressIdExist(topic.CongressId));
             if (rulesResult!=null)
             {
                 return rulesResult;
@@ -91,6 +91,16 @@ namespace Business.Concrete
             if (!result)
             {
                 return new ErrorResult(Messages.TopicNotExist);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfCongressIdExist(int congressId)
+        {
+            var result = _topicDal.GetAll(x => x.CongressId == congressId).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CongressAlreadyHaveTopics);
             }
             return new SuccessResult();
         }

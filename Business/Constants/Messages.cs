@@ -131,14 +131,16 @@ namespace Business.Constants
         public static string TransportImageIdNotExist="Ulaşım görseli mevcut değil";
         public static string TransportImageLimitExceeded="Daha fazla görsel yüklenemez";
         public static string TransportImageIsListed="Ulaşım görseli listelendi";
- 
 
+        public static string CongressAlreadyHavePresident="Bu Kongrenin Bir Başkanı Zaten Var";
+        public static string CongressAlreadyHaveRegulatoryBoard="Bu Kongrenin Bir Düzenleme Kurulu Zaten Var";
+        public static string CongressAlreadyHaveScienceBoard="Bu Kongrenin Bir Bilim Kurulu Zaten Var";
+        public static string CongressAlreadyHaveTopics="Bu Kongrenin Konuları Zaten Var";
 
-
-     
-
-      
-
-
+        public static string MessageSended="Mesaj gönderildi";
+        public static string MessageDeleted="Mesaj silindi";
+        public static string MessageUpdated="Mesaj güncellendi";
+        public static string Messagebrought="Mesaj Getirildi";
+        public static string MessagesListed="Mesajlar Listelendi";
     }
 }

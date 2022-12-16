@@ -14,7 +14,7 @@ namespace Business.ValidationRules.FluentValidation
         public AnnounceValidator()
         {
             RuleFor(x => x.AnnounceTitle).NotEmpty().WithMessage("Bu alanı boş geçmeyin");
-           // RuleFor(x => x.AnnounceStatus).NotEmpty().WithMessage("Bu alanı boş geçmeyin");
+            RuleFor(x => x.AnnounceStatus).NotEmpty().WithMessage("Bu alanı boş geçmeyin");
             RuleFor(x => x.AnnounceDate).NotEmpty().WithMessage("Bu alanı boş geçmeyin");
             RuleFor(x => x.AnnounceContent).NotEmpty().WithMessage("Bu alanı boş geçmeyin");
 

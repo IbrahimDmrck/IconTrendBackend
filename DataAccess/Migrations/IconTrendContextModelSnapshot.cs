@@ -198,6 +198,26 @@ namespace DataAccess.Migrations
                     b.ToTable("CongressPresidents");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("NameSurname")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("Entities.Concrete.RegulatoryBoard", b =>
                 {
                     b.Property<int>("Id")
