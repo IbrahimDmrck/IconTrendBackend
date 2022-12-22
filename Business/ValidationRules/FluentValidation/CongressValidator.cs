@@ -13,10 +13,9 @@ namespace Business.ValidationRules.FluentValidation
         public CongressValidator()
         {
             RuleFor(x => x.CongressAbout).NotEmpty().WithMessage("Bu alan boş geçilemez");
-            RuleFor(x => x.CongressCity).NotEmpty().WithMessage("Bu alan boş geçilemez");
+            RuleFor(x => x.CongressAdress).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressDate).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressName).NotEmpty().WithMessage("Bu alan boş geçilemez");
-            RuleFor(x => x.CongressPlace).NotEmpty().WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.CongressStatus).NotEmpty().WithMessage("Bu alan boş geçilemez");
 
         }

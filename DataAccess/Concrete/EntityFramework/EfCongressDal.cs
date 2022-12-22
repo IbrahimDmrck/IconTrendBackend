@@ -20,33 +20,19 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context=new IconTrendContext())
             {
                 var result = from congress in context.Congresses
-                             join president in context.CongressPresidents
-                                 on congress.CongressPresidentId equals president.Id
-                             join regulatory in context.RegulatoryBoards
-                                on congress.RegulatoryBoardId equals regulatory.Id
-                             join science in context.ScienceBoards
-                                on congress.ScienceBoardId equals science.Id
-                             join topic in context.Topics
-                                on congress.TopicId equals topic.Id
                              select new CongressDetailDto
                              {
                                  CongressId=congress.CongressId,
-                                 CongressPresidentId=congress.CongressPresidentId,
-                                 RegulatoryBoardId=congress.RegulatoryBoardId,
-                                 ScienceBoardId=congress.ScienceBoardId,
-                                 TopicId=congress.TopicId,
+                                 CongressPresidentName=congress.CongressPresidentName,
+                                 RegulatoryBoard=congress.RegulatoryBoard,
+                                 ScienceBoard=congress.ScienceBoard,
+                                 Topic=congress.Topic,
                                  CongressName=congress.CongressName,
                                  CongressAbout = congress.CongressAbout,
-                                 CongressCity = congress.CongressCity,
-                                 CongressPlace = congress.CongressPlace,
+                                 CongressAdress = congress.CongressAdress,
                                  CongressDate = congress.CongressDate,
                                  CongressStatus = congress.CongressStatus,
-                                 CongressPresidentName=president.CongressPresidentName,
-                                 RegulatoryBoardMemberName=regulatory.RegulatoryBoardMemberName,
-                                 ScienceBoardMemberName=science.ScienceBoardMemberName,
-                                 TopicName=topic.TopicName,
-                                 RegulatoryBoardMemberUnivercity=regulatory.Univercity,
-                                 ScienceBoardMemberUnivercity=science.Univercity,
+                                 Univercity=congress.Univercity,
                                  CongressImages = ((from ci in context.CongressImages
                                                     where (congress.CongressId == ci.CongressId)
                                                     select new CongressImage

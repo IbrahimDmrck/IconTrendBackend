@@ -40,14 +40,14 @@ namespace Business.Concrete
             var result = _congressDal.Get(x =>
               x.CongressName == congress.CongressName &&
               x.CongressAbout == congress.CongressAbout  &&
-              x.CongressCity==congress.CongressCity &&
-              x.CongressPlace==congress.CongressPlace &&
+              x.CongressAdress == congress.CongressAdress &&
               x.CongressDate==congress.CongressDate &&
-              x.CongressPresidentId==congress.CongressPresidentId &&
+              x.CongressPresidentName==congress.CongressPresidentName &&
               x.CongressStatus==congress.CongressStatus &&
-              x.RegulatoryBoardId==congress.RegulatoryBoardId &&
-              x.ScienceBoardId==congress.ScienceBoardId &&
-              x.TopicId==congress.TopicId);
+              x.RegulatoryBoard==congress.RegulatoryBoard &&
+              x.ScienceBoard==congress.ScienceBoard &&
+              x.Univercity==congress.Univercity &&
+              x.Topic==congress.Topic);
             if (result !=null)
             {
                 return new SuccessDataResult<int>(result.CongressId,Messages.CongressAdded);

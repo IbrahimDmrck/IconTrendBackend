@@ -11,22 +11,16 @@ namespace Entities.DTOs
     public class CongressDetailDto:IDto
     {
         public int CongressId { get; set; }
-        public string CongressName { get; set; }
-        public int CongressPresidentId { get; set; }
         public string CongressPresidentName { get; set; }
+        public string RegulatoryBoard { get; set; }
+        public string ScienceBoard { get; set; }
+        public string Topic { get; set; }
+        public string Univercity { get; set; }
+        public string CongressName { get; set; }
         public string CongressAbout { get; set; }
-        public string CongressCity { get; set; }
-        public string CongressPlace { get; set; }
+        public string CongressAdress { get; set; }
         public DateTime CongressDate { get; set; }
         public bool CongressStatus { get; set; }
-        public int TopicId { get; set; }
-        public string TopicName { get; set; }
-        public int ScienceBoardId { get; set; }
-        public string ScienceBoardMemberName { get; set; }
-        public string ScienceBoardMemberUnivercity { get; set; }
-        public int RegulatoryBoardId { get; set; }
-        public string RegulatoryBoardMemberName { get; set; }
-        public string RegulatoryBoardMemberUnivercity { get; set; }
         public List<CongressImage> CongressImages { get; set; }
     }
 }

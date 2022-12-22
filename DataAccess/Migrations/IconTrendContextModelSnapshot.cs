@@ -129,7 +129,7 @@ namespace DataAccess.Migrations
                     b.Property<string>("CongressAbout")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CongressCity")
+                    b.Property<string>("CongressAdress")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CongressDate")
@@ -138,23 +138,23 @@ namespace DataAccess.Migrations
                     b.Property<string>("CongressName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("CongressPlace")
+                    b.Property<string>("CongressPresidentName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("CongressPresidentId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("CongressStatus")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("RegulatoryBoardId")
-                        .HasColumnType("int");
+                    b.Property<string>("RegulatoryBoard")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("ScienceBoardId")
-                        .HasColumnType("int");
+                    b.Property<string>("ScienceBoard")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("TopicId")
-                        .HasColumnType("int");
+                    b.Property<string>("Topic")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Univercity")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("CongressId");
 
@@ -216,6 +216,67 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Kongre", b =>
+                {
+                    b.Property<int>("KongreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("BilimKurulu")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("CongressStatus")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("KongreAdi")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("KongreAdresi")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("KongreBaskani")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("KongreDuzenlemeKurulu")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("KongreHakkinda")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("KongreKonusu")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("KongreTarihi")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Univercity")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("KongreId");
+
+                    b.ToTable("Kongres");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.KongreImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("KongreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KongreImages");
                 });
 
             modelBuilder.Entity("Entities.Concrete.RegulatoryBoard", b =>
