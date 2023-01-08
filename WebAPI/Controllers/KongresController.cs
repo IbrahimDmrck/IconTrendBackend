@@ -64,6 +64,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getkongrewithdetails")]
+        public IActionResult GetDetails()
+        {
+            var result = _kongreService.GetKongreWithDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getkongresdetails")]
         public IActionResult GetDetails(int kongreId)
         {

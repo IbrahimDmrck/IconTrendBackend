@@ -58,6 +58,17 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<KongreImageManager>().As<IKongreImageService>().SingleInstance();
             builder.RegisterType<EfKongreImageDal>().As<IKongreImageDal>().SingleInstance();
 
+
+            builder.RegisterType<SaveManager>().As<ISaveService>().SingleInstance();
+            builder.RegisterType<EfSaveDal>().As<ISaveDal>().SingleInstance();
+
+            builder.RegisterType<BankAccountInfoManager>().As<IBankAccountInfoService>().SingleInstance();
+            builder.RegisterType<EfBankAccountInfoDal>().As<IBankAccountInfoDal>().SingleInstance();
+
+            builder.RegisterType<TrBankAccountInfoManager>().As<ITrBankAccountInfoService>().SingleInstance();
+            builder.RegisterType<EfTrBankAccountInfoDal>().As<ITrBankAccountInfoDal>().SingleInstance();
+
+
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 

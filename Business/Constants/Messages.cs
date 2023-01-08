@@ -142,5 +142,23 @@ namespace Business.Constants
         public static string MessageUpdated="Mesaj güncellendi";
         public static string Messagebrought="Mesaj Getirildi";
         public static string MessagesListed="Mesajlar Listelendi";
+
+        public static string BankAccountAdded="Banka Hesabı Eklendi";
+        public static string BankAccountDeleted= "Banka Hesabı Silindi";
+        public static string BankAccountUpdated= "Banka Hesabı Güncellendi";
+        public static string BankAccountsListed= "Banka Hesapları Listelendi";
+        public static string BankAccountBrought="Banka Hesabı Listelendi";
+
+        public static string SaveAdded="Kayıt Eklendi";
+        public static string SaveDeleted = "Kayıt Silindi";
+        public static string SaveUpdated = "Kayıt Güncellendi";
+        public static string SavesListed = "Kayıtlar Listelendi";
+        public static string SaveBrought = "Kayıt Listelendi";
+
+        public static string TrBankAccountAdded="Türkiye Banka Hesabı Eklendi";
+        public static string TrBankAccountDeleted = "Türkiye Banka Hesabı Silindi";
+        public static string TrBankAccountUpdated = "Türkiye Banka Hesabı Güncellendi";
+        public static string TrBankAccountsListed = "Türkiye Banka Hesapları Listelendi";
+        public static string TrBankAccountBrought = "Türkiye Banka Hesabı Listelendi";
     }
 }

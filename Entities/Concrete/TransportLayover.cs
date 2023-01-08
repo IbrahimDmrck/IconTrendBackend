@@ -10,7 +10,7 @@ namespace Entities.Concrete
         public int TransportId { get; set; }
         public int Capacity { get; set; }
         public string MinDemand { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public string Description { get; set; }
        
     }

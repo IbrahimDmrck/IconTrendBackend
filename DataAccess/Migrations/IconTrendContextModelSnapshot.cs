@@ -120,6 +120,35 @@ namespace DataAccess.Migrations
                     b.ToTable("Announcements");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.BankAccountInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Branch")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BankAccountInfos");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Congress", b =>
                 {
                     b.Property<int>("CongressId")
@@ -227,9 +256,6 @@ namespace DataAccess.Migrations
                     b.Property<string>("BilimKurulu")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool>("CongressStatus")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("KongreAdi")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -250,9 +276,6 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime>("KongreTarihi")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Univercity")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("KongreId");
 
@@ -299,6 +322,38 @@ namespace DataAccess.Migrations
                     b.ToTable("RegulatoryBoards");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Save", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("OralPresentationMemberPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("OralPresentationNonMemberPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ParticipationPriceServiceAdditionDescription")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("VideoConferenceDescription")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("VideoConferenceMemberPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("VideoConferenceNonMemberPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Saves");
+                });
+
             modelBuilder.Entity("Entities.Concrete.ScienceBoard", b =>
                 {
                     b.Property<int>("Id")
@@ -339,6 +394,32 @@ namespace DataAccess.Migrations
                     b.ToTable("Topics");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.TrBankAccountInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AccountName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("BankName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description1")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Description2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Iban")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrBankAccountInfos");
+                });
+
             modelBuilder.Entity("Entities.Concrete.TransportLayover", b =>
                 {
                     b.Property<int>("TransportId")
@@ -354,8 +435,8 @@ namespace DataAccess.Migrations
                     b.Property<string>("MinDemand")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
                     b.HasKey("TransportId");
 

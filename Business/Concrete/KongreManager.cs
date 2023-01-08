@@ -95,7 +95,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult CheckIfKongreAdı(string kongreAdi)
+        private IResult CheckIfKongreAdi(string kongreAdi)
         {
             var result = _kongreDal.GetAll(x => x.KongreAdi == kongreAdi).Any();
             if (result)

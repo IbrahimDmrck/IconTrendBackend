@@ -70,7 +70,29 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-       // [Authorize(Roles = "Admin")]
+        [HttpGet("getannouncementswithdetails")]
+        public IActionResult GetDetails()
+        {
+            var result = _announcementService.GetAnnouncementsWithDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getannouncedetails")]
+        public IActionResult GetDetails(int announceId)
+        {
+            var result = _announcementService.GetAnnounceDetails(announceId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
         [HttpPost("update")]
         public IActionResult Update(Announcement announcement)
         {

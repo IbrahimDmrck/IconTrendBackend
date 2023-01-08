@@ -40,6 +40,9 @@ namespace DataAccess.Concrete.Context
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Kongre> Kongres { get; set; }
         public virtual DbSet<KongreImage> KongreImages { get; set; }
+        public virtual DbSet<BankAccountInfo> BankAccountInfos { get; set; }
+        public virtual DbSet<TrBankAccountInfo> TrBankAccountInfos { get; set; }
+        public virtual DbSet<Save> Saves { get; set; }
       
 
     }

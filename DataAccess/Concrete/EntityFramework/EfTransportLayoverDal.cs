@@ -19,8 +19,6 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new IconTrendContext())
             {
                 var result = from transport in context.TransportLayovers
-                             join image in context.TransportLayoverImages
-                            on transport.TransportId equals image.TransportLayoverId
                              select new TransportLayoverDetailDto
                              {
                                  TransportId = transport.TransportId,
@@ -28,26 +26,25 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = transport.Description,
                                  MinDemand = transport.MinDemand,
                                  Price = transport.Price,
-                                 TransportLayoverImages = ((from ti in context.TransportLayoverImages
-                                                            where
-                  (transport.TransportId == ti.TransportLayoverId)
+                                 TransportLayoverImages = ((from trImg in context.TransportLayoverImages
+                                                            where (transport.TransportId == trImg.TransportLayoverId)
                                                             select new TransportLayoverImage
                                                             {
-                                                                Id = ti.Id,
-                                                                TransportLayoverId = ti.TransportLayoverId,
-                                                                Date = ti.Date,
-                                                                ImagePath = ti.ImagePath
-                                                            }).ToList()).Count() == 0
-                                                          ? new List<TransportLayoverImage> { new TransportLayoverImage { Id = -1, TransportLayoverId = transport.TransportId, Date = DateTime.Now, ImagePath = "/images/default.jpg" } }
-                                                          : (from ti in context.TransportLayoverImages
-                                                             where (transport.TransportId == ti.TransportLayoverId)
-                                                             select new TransportLayoverImage
-                                                             {
-                                                                 Id = ti.Id,
-                                                                 TransportLayoverId = ti.TransportLayoverId,
-                                                                 Date = ti.Date,
-                                                                 ImagePath = ti.ImagePath
-                                                             }).ToList()
+                                                                Id = trImg.Id,
+                                                                TransportLayoverId = trImg.TransportLayoverId,
+                                                                Date = trImg.Date,
+                                                                ImagePath = trImg.ImagePath
+                                                            }).ToList()).Count == 0 ?
+                                                          new List<TransportLayoverImage> { new TransportLayoverImage { Id = -1, TransportLayoverId = transport.TransportId, Date = DateTime.Now, ImagePath = "/images/default.jpg" } } :
+                                                          (from trImg in context.TransportLayoverImages
+                                                           where (transport.TransportId == trImg.TransportLayoverId)
+                                                           select new TransportLayoverImage
+                                                           {
+                                                               Id = trImg.Id,
+                                                               TransportLayoverId = trImg.TransportLayoverId,
+                                                               Date = trImg.Date,
+                                                               ImagePath = trImg.ImagePath
+                                                           }).ToList()
                              };
 
                 return filter == null
