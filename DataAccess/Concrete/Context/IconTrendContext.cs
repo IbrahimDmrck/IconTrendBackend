@@ -43,6 +43,7 @@ namespace DataAccess.Concrete.Context
         public virtual DbSet<BankAccountInfo> BankAccountInfos { get; set; }
         public virtual DbSet<TrBankAccountInfo> TrBankAccountInfos { get; set; }
         public virtual DbSet<Save> Saves { get; set; }
+        public virtual DbSet<GeneralInformation> GeneralInformations { get; set; }
       
 
     }

@@ -68,6 +68,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<TrBankAccountInfoManager>().As<ITrBankAccountInfoService>().SingleInstance();
             builder.RegisterType<EfTrBankAccountInfoDal>().As<ITrBankAccountInfoDal>().SingleInstance();
 
+            builder.RegisterType<GeneralInformationManager>().As<IGeneralInformationService>().SingleInstance();
+            builder.RegisterType<EfGeneralInformationDal>().As<IGeneralInformationDal>().SingleInstance();
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();

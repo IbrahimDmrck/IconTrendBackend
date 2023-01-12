@@ -160,5 +160,11 @@ namespace Business.Constants
         public static string TrBankAccountUpdated = "Türkiye Banka Hesabı Güncellendi";
         public static string TrBankAccountsListed = "Türkiye Banka Hesapları Listelendi";
         public static string TrBankAccountBrought = "Türkiye Banka Hesabı Listelendi";
+
+        internal static string GeneralInformationAdd="Genel Bilgiler Eklendi";
+        internal static string GeneralInformationDelete = "Genel Bilgiler Silindi";
+        internal static string GeneralInformationUpdate = "Genel Bilgiler Güncellendi";
+        internal static string GeneralInformationListed = "Genel Bilgi Getirildi";
+        internal static string GeneralInformationsListed = "Genel Bilgiler Listelendi";
     }
 }

@@ -3,6 +3,7 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Result.Abstract;
@@ -29,7 +30,7 @@ namespace Business.Concrete
             _announceImageService = announceImageService;
         }
 
-       
+      
         [SecuredOperation("Admin")]
         [ValidationAspect(typeof(AnnounceValidator))]
         [CacheRemoveAspect("IAnnounceService.Get")]

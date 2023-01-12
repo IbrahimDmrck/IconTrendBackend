@@ -20,8 +20,8 @@ namespace Business.Concrete
 {
     public class TransportLayoverManager : ITransportLayoverService
     {
-        ITransportLayoverDal _transportLayoverDal;
-        ITransportLayoverImageService _transportLayoverImageService;
+        readonly ITransportLayoverDal _transportLayoverDal;
+        readonly ITransportLayoverImageService _transportLayoverImageService;
 
         public TransportLayoverManager(ITransportLayoverDal transportLayoverDal, ITransportLayoverImageService transportLayoverImageService)
         {
@@ -83,6 +83,8 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<TransportLayover>(_transportLayoverDal.Get(x => x.TransportId == id), Messages.TransportLayoverIsListed);
         }
+
+    
 
         [SecuredOperation("Admin")]
         [ValidationAspect(typeof(TransportLayoverValidator))]

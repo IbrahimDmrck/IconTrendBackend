@@ -20,5 +20,6 @@ namespace Entities.Concrete
         public string KongreHakkinda { get; set; }
         public string KongreAdresi { get; set; }
         public DateTime KongreTarihi { get; set; }
+        public DateTime KongreBitisTarihi { get; set; }
     }
 }
